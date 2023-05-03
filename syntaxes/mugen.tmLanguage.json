@@ -1,0 +1,185 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "mugen",
+	"scopeName": "source.mugen",
+	"patterns": [
+		{"include": "#comments"},
+		{"include": "#strings"},
+		{"include": "#sections"},
+		{"include": "#keyValues"}
+	],
+	"repository": {
+		"comments": {
+			"name": "comment.line",
+			"begin": ";",
+			"end": "$"
+		},
+		"sections": {
+			"begin": "^(?=\\[)",
+			"end": "$",
+			"patterns": [
+				{"include": "#comments"},
+				{"include": "#statedef"},
+				{
+					"name": "entity.name.class",
+					"match": "[^;]+\\]"
+				}
+			]
+		},
+		"statedef": {
+			"name": "string.regexp",
+			"match": "\\[(?i)statedef *-?\\d+\\]"
+		},
+		"keyValues": {
+			"patterns": [
+				{"include": "#comments"},
+				{
+					"match": "^([^;=]+)\\s*(.*)$",
+					"captures": {
+						"1": {
+							"patterns": [
+								{"include": "#triggers"},
+								{"include": "#variable"},
+								{
+									"name": "constant.character",
+									"match": "\\S"
+								}
+							]
+						},
+						"2": {
+							"patterns": [
+								{"include": "#comments"},
+								{"include": "#values"}
+							]
+						}
+					}
+				}
+			]
+		},
+		"triggers": {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "(?i)trigger\\d+"
+				},
+				{
+					"name": "string.regexp",
+					"match": "(?i)triggerall"
+				}
+			]
+		},
+		"values": {
+			"patterns": [
+				{"include": "#comments"},
+				{"include": "#strings"},
+				{"include": "#number"},
+				{"include": "#operator"},
+				{"include": "#area"},
+				{"include": "#ifelse"},
+				{"include": "#variable"},
+				{"include": "#const"},
+				{"include": "#gethitvar"},
+				{"include": "#function"},
+				{
+					"name":"variable",
+					"match": "."
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape",
+					"match": "\\\\."
+				}
+			]
+		},
+		"number": {
+			"patterns": [
+				{
+					"name": "constant.numeric",
+					"match": "\\b\\d+\\b"
+				}
+			]
+		},
+		"operator": {
+			"patterns": [
+				{
+					"name": "keyword.operator.new",
+					"match": "(>=|<=|!=|:=|=|<|>)"
+				},
+				{
+					"name": "keyword.control",
+					"match": "(\\||!|&|\\^)"
+				}
+			]
+		},
+		"area": {
+			"name": "constant.character.escape",
+			"begin": "\\[",
+			"end": "\\]",
+			"patterns": [
+				{
+					"name": "constant.character.escape",
+					"match": ","
+				},
+				{
+					"include": "#values"
+				}
+			]
+		},
+		"ifelse": {
+			"name": "keyword.control",
+			"begin": "(?i)ifelse\\(",
+			"end": "\\)",
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": ","
+				},
+				{
+					"include": "#values"
+				}
+			]
+		},
+		"variable": {
+			"name": "constant.character",
+			"begin": "(?i)(f|sys|sysf)?var\\(",
+			"end": "\\)",
+			"patterns": [
+				{
+					"include": "#values"
+				}
+			]
+		},
+		"const": {
+			"patterns": [
+				{
+					"name": "entity.name.class",
+					"match": "(?i)const\\([^;]+\\)"
+				}
+			]
+		},
+		"gethitvar": {
+			"patterns": [
+				{
+					"name": "entity.name.function",
+					"match": "(?i)gethitvar\\([^;]+\\)"
+				}
+			]
+		},
+		"function": {
+			"name": "entity.name.function",
+			"begin": "((?i)[a-z]+)?\\(",
+			"end": "\\)",
+			"patterns": [
+				{
+					"include": "#values"
+				}
+			]
+		}
+	}
+}

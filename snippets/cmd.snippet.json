@@ -1,0 +1,14 @@
+{
+    "Command" : {
+        "prefix": "Command",
+        "body": [
+            "[Command]",
+            "Name = \"$1\"",
+            "Command = $2",
+            "Time = ${3:25}"
+        ],
+        "description": [
+            "コマンドを定義します"
+        ]
+    }
+}

@@ -1,0 +1,1723 @@
+{
+    "StateDef" : {
+        "prefix": "StateDef",
+        "body": [
+            "[StateDef $1]",
+            "Type = ${2:S}",
+            "MoveType = ${3:I}",
+            "Physics = ${4:N}",
+            "Anim = $5",
+            "SprPriority = $6",
+            "Ctrl = $7",
+            "PowerAdd = $8",
+            "VelSet = $9, $10",
+            "Juggle = $11",
+            "FaceP2 = ${12:0}",
+            "HitDefPersist = ${13:0}",
+            "MoveHitPersist = ${14:0}",
+            "HitCountPersist = ${15:0}"
+        ],
+        "description": [
+            "ステートを定義します"
+        ]
+    },
+    "AfterImage" : {
+        "prefix": "AfterImage",
+        "body": [
+            "[State , AfterImage]",
+            "Type = AfterImage",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:1}",
+            "Length = ${3:20}",
+            "Timegap = ${4:1}",
+            "Framegap = ${5:4}",
+            "PalColor = ${6:256}",
+            "PalInvertall = ${7:0}",
+            "PalBright = ${8:30}, ${9:30}, ${10:30}",
+            "PalContrast = ${11:120}, ${12:120}, ${13:120}",
+            "PalPostBright = ${14:0}, ${15:0}, ${16:0}",
+            "PalAdd = ${17:10}, ${18:10}, ${19:25}",
+            "PalMul = ${20:.65}, ${21:.65}, ${22:.75}",
+            "Trans = ${23:None}",
+            "Alpha = ${24:256}, ${25:0}",
+            "Persistent = ${26:1}",
+            "IgnoreHitPause = ${27:0}"
+        ],
+        "description": [
+            "残像を表示します"
+        ]
+    },
+    "AfterImageTime" : {
+        "prefix": "AfterImageTime",
+        "body": [
+            "[State , AfterImageTime]",
+            "Type = AfterImageTime",
+            "Trigger1 = ${1:1}",
+            "Time = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "残像の表示時間を上書きします"
+        ]
+    },
+    "AllPalFX" : {
+        "prefix": "AllPalFX",
+        "body": [
+            "[State , AllPalFX]",
+            "Type = AllPalFX",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:0}",
+            "Color = ${3:256}",
+            "Add = ${4:0}, ${5:0}, ${6:0}",
+            "Mul = ${7:256}, ${8:256}, ${9:256}",
+            "SinAdd = ${10:0}, ${11:0}, ${12:0}, ${13:0}",
+            "InvertAll = ${14:0}",
+            "Persistent = ${15:1}",
+            "IgnoreHitPause = ${16:0}"
+        ],
+        "description": [
+            "画面全体の色を変更します"
+        ]
+    },
+    "AngleAdd" : {
+        "prefix": "AngleAdd",
+        "body": [
+            "[State , AngleAdd]",
+            "Type = AngleAdd",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "AngleDrawの角度に加算します"
+        ]
+    },
+    "AngleDraw" : {
+        "prefix": "AngleDraw",
+        "body": [
+            "[State , AngleDraw]",
+            "Type = AngleDraw",
+            "Trigger1 = ${1:1}",
+            "value = ${2:0}",
+            "Scale = ${3:1}, ${4:1}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "プレイヤーの軸を中心に回転させて表示します\n",
+            "AngleAdd、AngleMul、AngleSetと併せて使用します"
+        ]
+    },
+    "AngleMul" : {
+        "prefix": "AngleMul",
+        "body": [
+            "[State , AngleMul]",
+            "Type = AngleMul",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "AngleDrawの角度に乗算します"
+        ]
+    },
+    "AngleSet" : {
+        "prefix": "AngleSet",
+        "body": [
+            "[State , AngleSet]",
+            "Type = AngleSet",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "AngleDrawの角度を指定値に変更します"
+        ]
+    },
+    "AppendToClipboard" : {
+        "prefix": "AppendToClipboard",
+        "body": [
+            "[State , AppendToClipboard]",
+            "Type = AppendToClipboard",
+            "Trigger1 = ${1:1}",
+            "Text = \"$2\"",
+            "Params = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "クリップボードに変数・トリガー等の値を表示します\n",
+            "DisplayToClipboardは、すでにメッセージが存在する場合上書きされますが、",
+            "こちらは改行して表示されます。"
+        ]
+    },
+    "AssertSpecial" : {
+        "prefix": "AssertSpecial",
+        "body": [
+            "[State , AssertSpecial]",
+            "Type = AssertSpecial",
+            "Trigger1 = ${1:1}",
+            "Flag = ${2|Intro,RoundNotOver,Invisible,GlobalNoShadow,NoShadow,NoBarDisplay,NoBG,NoFG,NoKOSnd,NoKOSlow,NoMusic,NoStandGuard,NoCrouchGuard,NoAirGuard,NoWalk,NoAutoTurn,NoJuggleCheck,NoKO,TimerFreeze,UnGuardAble|}",
+            "Flag2 = ${3|Intro,RoundNotOver,Invisible,GlobalNoShadow,NoShadow,NoBarDisplay,NoBG,NoFG,NoKOSnd,NoKOSlow,NoMusic,NoStandGuard,NoCrouchGuard,NoAirGuard,NoWalk,NoAutoTurn,NoJuggleCheck,NoKO,TimerFreeze,UnGuardAble|}",
+            "Flag3 = ${4|Intro,RoundNotOver,Invisible,GlobalNoShadow,NoShadow,NoBarDisplay,NoBG,NoFG,NoKOSnd,NoKOSlow,NoMusic,NoStandGuard,NoCrouchGuard,NoAirGuard,NoWalk,NoAutoTurn,NoJuggleCheck,NoKO,TimerFreeze,UnGuardAble|}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "特殊処理を行います"
+        ]
+    },
+    "AttackDist" : {
+        "prefix": "AttackDist",
+        "body": [
+            "[State , AttackDist]",
+            "Type = AttackDist",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "攻撃時に相手が防御体制をとる距離を変更します"
+        ]
+    },
+    "AttackMulSet" : {
+        "prefix": "AttackMulSet",
+        "body": [
+            "[State , AttackMulSet]",
+            "Type = AttackMulSet",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "攻撃力を倍数で指定します"
+        ]
+    },
+    "BGPalFX" : {
+        "prefix": "BGPalFX",
+        "body": [
+            "[State , BGPalFX]",
+            "Type = BGPalFX",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:0}",
+            "Color = ${3:256}",
+            "Add = ${4:0}, ${5:0}, ${6:0}",
+            "Mul = ${7:256}, ${8:256}, ${9:256}",
+            "SinAdd = ${10:0}, ${11:0}, ${12:0}, ${13:0}",
+            "InvertAll = ${14:0}",
+            "Persistent = ${15:1}",
+            "IgnoreHitPause = ${16:0}"
+        ],
+        "description": [
+            "背景の色を変更します"
+        ]
+    },
+    "BindToParent" : {
+        "prefix": "BindToParent",
+        "body": [
+            "[State , BindToParent]",
+            "Type = BindToParent",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:1}",
+            "Facing = ${3:0}",
+            "Pos = ${4:0}, ${5:0}",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "Helperの親を基準にして位置を固定します\n",
+            "Helperのステート内で記述します"
+        ]
+    },
+    "BindToRoot" : {
+        "prefix": "BindToRoot",
+        "body": [
+            "[State , BindToRoot]",
+            "Type = BindToRoot",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:1}",
+            "Facing = ${3:0}",
+            "Pos = ${4:0}, ${5:0}",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "Helperのルートを基準にして位置を固定します\n",
+            "Helperのステート内で記述します"
+        ]
+    },
+    "BindToTarget" : {
+        "prefix": "BindToTarget",
+        "body": [
+            "[State , BindToTarget]",
+            "Type = BindToTarget",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "Time = ${3:1}",
+            "Pos = $4",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "特定のターゲットを基準にプレイヤーの位置を固定します"
+        ]
+    },
+    "ChangeAnim" : {
+        "prefix": "ChangeAnim",
+        "body": [
+            "[State , ChangeAnim]",
+            "Type = ChangeAnim",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Elem = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "アニメーションを変更します"
+        ]
+    },
+    "ChangeAnim2" : {
+        "prefix": "ChangeAnim2",
+        "body": [
+            "[State , ChangeAnim2]",
+            "Type = ChangeAnim2",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Elem = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "ターゲットのアニメーションを変更します\n",
+            "ターゲットに参照させるステート内で使用します"
+        ]
+    },
+    "ChangeState" : {
+        "prefix": "ChangeState",
+        "body": [
+            "[State , ChangeState]",
+            "Type = ChangeState",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Ctrl = ${3:Ctrl}",
+            "Anim = ${4:-1}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "ステート・アニメーション・コントロールを変更します"
+        ]
+    },
+    "ClearClipboard" : {
+        "prefix": "ClearClipboard",
+        "body": [
+            "[State , ClearClipboard]",
+            "Type = ClearClipboard",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "クリップボードの内容を消去します"
+        ]
+    },
+    "CtrlSet" : {
+        "prefix": "CtrlSet",
+        "body": [
+            "[State , CtrlSet]",
+            "Type = CtrlSet",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "コントロールフラグを設定します"
+        ]
+    },
+    "DefenceMulSet" : {
+        "prefix": "DefenceMulSet",
+        "body": [
+            "[State , DefenceMulSet]",
+            "Type = DefenceMulSet",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "防御力を倍数で指定します"
+        ]
+    },
+    "DestroySelf" : {
+        "prefix": "DestroySelf",
+        "body": [
+            "[State , DestroySelf]",
+            "Type = DestroySelf",
+            "Trigger1 = ${1:1}",
+            "Recursive = ${2:0}",
+            "RemoveExplods = ${3:0}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "Helperを消去します\n",
+            "Helperのステートに記述します"
+        ]
+    },
+    "DisplayToClipboard" : {
+        "prefix": "DisplayToClipboard",
+        "body": [
+            "[State , DisplayToClipboard]",
+            "Type = DisplayToClipboard",
+            "Trigger1 = ${1:1}",
+            "Text = \"$2\"",
+            "Params = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "クリップボードに変数・トリガー等の値を表示します\n",
+            "すでにメッセージが存在する場合、上書きされます"
+        ]
+    },
+    "EnvColor" : {
+        "prefix": "EnvColor",
+        "body": [
+            "[State , EnvColor]",
+            "Type = EnvColor",
+            "Trigger1 = ${1:1}",
+            "value = ${2:255}, ${3:255}, ${4:255}",
+            "Time = ${5:1}",
+            "Under = ${6:0}",
+            "Persistent = ${7:1}",
+            "IgnoreHitPause = ${8:0}"
+        ],
+        "description": [
+            "画面を指定色で塗りつぶします\n",
+            "ただし、AllPalFX・ヒットスパークやOnTop=1のスプライト、",
+            "ライフバーでLayer=1以上に設定されたスプライトは表示されます"
+        ]
+    },
+    "EnvShake" : {
+        "prefix": "EnvShake",
+        "body": [
+            "[State , EnvShake]",
+            "Type = EnvShake",
+            "Trigger1 = ${1:1}",
+            "Time = $2",
+            "Ampl = ${3:-8}",
+            "Phase = ${4:0}",
+            "Freq = ${5:60}",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "画面を揺らします\n",
+            "ただし、ライフバーは揺れません"
+        ]
+    },
+    "Explod" : {
+        "prefix": "Explod",
+        "body": [
+            "[State , Explod]",
+            "Type = Explod",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:0}",
+            "Facing = ${3:1}",
+            "VFacing = ${4:1}",
+            "Pos = ${5:0}, ${6:0}",
+            "PosType = ${7:P1}",
+            "Random = ${8:0}, ${9:0}",
+            "Vel = ${10:0}, ${11:0}",
+            "Accel = ${12:0}, ${13:0}",
+            "Scale = ${14:0}, ${15:0}",
+            "BindTime = ${16:1}",
+            "SprPriority = ${17:0}",
+            "OnTop = ${18:0}",
+            "RemoveTime = ${19:-2}",
+            "SuperMoveTime = ${20:0}",
+            "PauseMoveTime = ${21:0}",
+            "Shadow = ${22:0}, ${23:0}, ${24:0}",
+            "RemoveOnGethit = ${25:0}",
+            "Trans = ${26:Add}",
+            "Alpha = ${27:256}, ${28:0}",
+            "Anim = $29",
+            "OwnPal = ${30:0}",
+            "Persistent = ${31:1}",
+            "IgnoreHitPause = ${32:0}"
+        ],
+        "description": [
+            "エフェクトを表示します"
+        ]
+    },
+    "ExplodBindTime" : {
+        "prefix": "ExplodBindTime",
+        "body": [
+            "[State , ExplodBindTime]",
+            "Type = ExplodBindTime",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "Time = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "Explodの固定時間を変更します"
+        ]
+    },
+    "FallEnvShake" : {
+        "prefix": "FallEnvShake",
+        "body": [
+            "[State , FallEnvShake]",
+            "Type = FallEnvShake",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "相手のHitDef中のfall.envshakeパラメータを実行します\n",
+            "プレイヤーが攻撃を受けているときに有効になります"
+        ]
+    },
+    "ForceFeedback" : {
+        "prefix": "ForceFeedback",
+        "body": [
+            "[State , ForceFeedback]",
+            "Type = ForceFeedback",
+            "Trigger1 = ${1:1}",
+            "WaveForm = ${2:\"Sine\"}",
+            "Time = ${3:60}",
+            "Ampl = ${4:128}, ${5:0}, ${6:0}, ${7:0}",
+            "Freq = ${8:128}, ${9:0}, ${10:0}, ${11:0}",
+            "Self = ${12:1}",
+            "Persistent = ${13:1}",
+            "IgnoreHitPause = ${14:0}"
+        ],
+        "description": [
+            "ゲームパッドを振動させます"
+        ]
+    },
+    "GameMakeAnim" : {
+        "prefix": "GameMakeAnim",
+        "body": [
+            "[State , GameMakeAnim]",
+            "Type = GameMakeAnim",
+            "Trigger1 = ${1:1}",
+            "value = ${2:0}",
+            "Pos = ${3:0}, ${4:0}",
+            "Random = ${5:0}",
+            "Under = ${6:0}",
+            "Persistent = ${7:1}",
+            "IgnoreHitPause = ${8:0}"
+        ],
+        "description": [
+            "ヒットマークやダウン衝撃などの共通アニメを表示します"
+        ]
+    },
+    "Gravity" : {
+        "prefix": "Gravity",
+        "body": [
+            "[State , Gravity]",
+            "Type = Gravity",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "CNSで設定した\"yaccel\"の値を利用してプレイヤーに重力をかけます"
+        ]
+    },
+    "Helper" : {
+        "prefix": "Helper",
+        "body": [
+            "[State , Helper]",
+            "Type = Helper",
+            "Trigger1 = ${1:1}",
+            "HelperType = ${2:Normal}",
+            "Name = $3",
+            "OwnPal = ${4:0}",
+            "Size.XScale = $5",
+            "Size.YScale = $6",
+            "Size.Ground.Back = $7",
+            "Size.Ground.Front = $8",
+            "Size.Air.Back = $9",
+            "Size.Air.Front = $10",
+            "Size.Height = $11",
+            "Size.Proj.DoScale = $12",
+            "Size.Head.Pos = $13",
+            "Size.Mid.Pos = $14",
+            "Size.ShadowOffset = $15",
+            "StateNo = ${16:0}",
+            "KeyCtrl = ${17:0}",
+            "ID = ${18:0}",
+            "Pos = ${19:0}, ${20:0}",
+            "PosType = ${21:P1}",
+            "Facing = ${22:1}",
+            "PauseMoveTime = ${23:0}",
+            "SuperMoveTime = ${24:0}",
+            "Persistent = ${25:1}",
+            "IgnoreHitPause = ${26:0}"
+        ],
+        "description": [
+            "プレイヤー以外のキャラクターを出現させます\n",
+            "飛び道具・分身・特殊ゲージ等で利用します"
+        ]
+    },
+    "HitAdd" : {
+        "prefix": "HitAdd",
+        "body": [
+            "[State , HitAdd]",
+            "Type = HitAdd",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "連続技実行中、ヒット数を増減します"
+        ]
+    },
+    "HitBy" : {
+        "prefix": "HitBy",
+        "body": [
+            "[State , HitBy]",
+            "Type = HitBy",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            ";value2 = ",
+            "Time = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "一時的に特定の攻撃以外食らわないようにします"
+        ]
+    },
+    "HitDef" : {
+        "prefix": "HitDef",
+        "body": [
+            "[State , HitDef]",
+            "Type = HitDef",
+            "Trigger1 = ${1:1}",
+            "Attr = $2",
+            "HitFlag = ${3:MAF}",
+            "GuardFlag = $4",
+            "AffectTeam = ${5:E}",
+            "AnimType = ${6:L}",
+            "Air.AnimType = $7",
+            "Fall.AnimType = $8",
+            "Ground.Type = ${9:H}",
+            "Air.Type = $10",
+            "ID = ${11:0}",
+            "ChainID = ${12:-1}",
+            "NoChainID = ${13:-1}",
+            "Kill = ${14:1}",
+            "Guard.Kill = ${15:1}",
+            "Fall.Kill = ${16:1}",
+            "HitOnce = ${17:0}",
+            "Air.Juggle = ${18:0}",
+            "Damage = ${19:0}, ${20:0}",
+            "GetPower = $21",
+            "GivePower = $22",
+            "PauseTime = ${23:0}, ${24:0}",
+            "NumHits = ${25:1}",
+            "HitSound = $26, $27",
+            "GuardSound = $28, $29",
+            "Priority = ${30:4}, ${31:H}",
+            "P1StateNo = ${32:-1}",
+            "P2StateNo = ${33:-1}",
+            "P2GetP1State = $34",
+            "P1SprPriority = ${35:1}",
+            "P2SprPriority = ${36:0}",
+            "ForceStand = $37",
+            "ForceNoFall = ${38:0}",
+            "Fall = ${39:0}",
+            "Fall.Damage = ${40:0}",
+            "Fall.XVelocity = $41",
+            "Fall.YVelocity = ${42:-4.5}",
+            "Fall.Recover = ${43:1}",
+            "Fall.RecoverTime = ${44:4}",
+            "SparkNo = $45",
+            "Guard.SparkNo = $46",
+            "SparkXY = ${47:0}, ${48:0}",
+            "P1Facing = $49",
+            "P1GetP2Facing = ${50:0}",
+            "Snap = $51",
+            "P2Facing = $52",
+            "Ground.HitTime = ${53:0}",
+            "Ground.SlideTime = ${54:0}",
+            "Ground.Velocity = ${55:0}, ${56:0}",
+            "Ground.CornerPush.VelOff = $57",
+            "Air.HitTime = ${58:20}",
+            "Air.Fall = $59",
+            "Air.Velocity = ${60:0}, ${61:0}",
+            "Air.CornerPush.VelOff = $62",
+            "Down.Bounce = ${63:0}",
+            "Down.HitTime = $64",
+            "Down.Velocity = $65",
+            "Down.CornerPush.VelOff = $66",
+            "Guard.Velocity = $67",
+            "Guard.HitTime = $68",
+            "Guard.SlideTime = $69",
+            "Guard.CtrlTime = $70",
+            "Guard.Dist = $71",
+            "Guard.PauseTime = $72",
+            "Guard.CornerPush.VelOff = $73",
+            "AirGuard.Velocity = $74",
+            "AirGuard.CtrlTime = $75",
+            "AirGuard.CornerPush.VelOff = $76",
+            "YAccel = ${77:0.35}",
+            "PalFX.Time = ${78:0}",
+            "PalFX.Color = ${79:256}",
+            "PalFX.Add = ${80:0}, ${81:0}, ${82:0}",
+            "PalFX.Mul = ${83:256}, ${84:256}, ${85:256}",
+            "PalFX.SinAdd = ${86:0}, ${87:0}, ${88:0}, ${89:0}",
+            "PalFX.InvertAll = ${90:0}",
+            "EnvShake.Time = $91",
+            "EnvShake.Ampl = ${92:-4}",
+            "EnvShake.Phase = ${93:0}",
+            "EnvShake.Freq = ${94:60}",
+            "Fall.EnvShake.Time = $95",
+            "Fall.EnvShake.Ampl = ${96:-4}",
+            "Fall.EnvShake.Phase = ${97:0}",
+            "Fall.EnvShake.Freq = ${98:60}",
+            "Attack.Width = $99",
+            "Persistent = ${100:1}",
+            "IgnoreHitPause = ${101:0}"
+        ],
+        "description": [
+            "攻撃判定を定義します"
+        ]
+    },
+    "HitFallDamage" : {
+        "prefix": "HitFallDamage",
+        "body": [
+            "[State , HitFallDamage]",
+            "Type = HitFallDamage",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "攻撃を受けたとき、自身に設定された落下ダメージを与えます"
+        ]
+    },
+    "HitFallSet" : {
+        "prefix": "HitFallSet",
+        "body": [
+            "[State , HitFallSet]",
+            "Type = HitFallSet",
+            "Trigger1 = ${1:1}",
+            "value = ${2:-1}",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "プレイヤーがヒットモーション中にあるとき、落下状態にします"
+        ]
+    },
+    "HitFallVel" : {
+        "prefix": "HitFallVel",
+        "body": [
+            "[State , HitFallVel]",
+            "Type = HitFallVel",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "プレイヤーが落下状態にあるとき、相手側で指定されたfall.xvelとfall.yvelの値を有効にします"
+        ]
+    },
+    "HitOverRide" : {
+        "prefix": "HitOverRide",
+        "body": [
+            "[State , HitOverRide]",
+            "Type = HitOverRide",
+            "Trigger1 = ${1:1}",
+            "Attr = $2",
+            "Slot = ${3:0}",
+            "StateNo = ${4:-1}",
+            "Time = ${5:1}",
+            "ForceAir = ${6:0}",
+            "Persistent = ${7:1}",
+            "IgnoreHitPause = ${8:0}"
+        ],
+        "description": [
+            "特定の攻撃を受けたときに、指定されたステートに移行します"
+        ]
+    },
+    "HitVelSet" : {
+        "prefix": "HitVelSet",
+        "body": [
+            "[State , HitVelSet]",
+            "Type = HitVelSet",
+            "Trigger1 = ${1:1}",
+            "X = $2",
+            "Y = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "プレイヤーがやられモーション中であるとき、相手側で指定された速度を有効にします"
+        ]
+    },
+    "LifeAdd" : {
+        "prefix": "LifeAdd",
+        "body": [
+            "[State , LifeAdd]",
+            "Type = LifeAdd",
+            "Trigger1 = ${1:1}",
+            "Absolute = ${2:0}",
+            "Kill = ${3:1}",
+            "value = $4",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "指定した値をライフに加算します"
+        ]
+    },
+    "LifeSet" : {
+        "prefix": "LifeSet",
+        "body": [
+            "[State , LifeSet]",
+            "Type = LifeSet",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "ライフを指定値に変更します"
+        ]
+    },
+    "MakeDust" : {
+        "prefix": "MakeDust",
+        "body": [
+            "[State , MakeDust]",
+            "Type = MakeDust",
+            "Trigger1 = ${1:1}",
+            "Spacing = ${2:3}",
+            "Pos = ${3:0}, ${4:0}",
+            ";Pos2 = ",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "土埃を表示します"
+        ]
+    },
+    "ModifyExplod" : {
+        "prefix": "ModifyExplod",
+        "body": [
+            "[State , ModifyExplod]",
+            "Type = ModifyExplod",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "Facing = $3",
+            "VFacing = $4",
+            "Pos = $5, $6",
+            "PosType = ${7:P1}",
+            "Random = $8, $9",
+            "Vel = $10, $11",
+            "Accel = $12, $13",
+            "Scale = $14, $15",
+            "BindTime = $16",
+            "SprPriority = $17",
+            "OnTop = $18",
+            "RemoveTime = $19",
+            "SuperMoveTime = $20",
+            "PauseMoveTime = $21",
+            "Shadow = $22, $23, $24",
+            "RemoveOnGethit = $25",
+            "Trans = $26",
+            "Alpha = $27, $28",
+            "Persistent = ${29:1}",
+            "IgnoreHitPause = ${30:0}"
+        ],
+        "description": [
+            "Explodの設定を変更します"
+        ]
+    },
+    "MoveHitReset" : {
+        "prefix": "MoveHitReset",
+        "body": [
+            "[State , MoveHitReset]",
+            "Type = MoveHitReset",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "ヒットフラグを0にします"
+        ]
+    },
+    "NotHitBy" : {
+        "prefix": "NotHitBy",
+        "body": [
+            "[State , NotHitBy]",
+            "Type = NotHitBy",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            ";value2 = ",
+            "Time = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "一時的に特定の攻撃を食らわないようにします"
+        ]
+    },
+    "Null" : {
+        "prefix": "Null",
+        "body": [
+            "[State , Null]",
+            "Type = Null",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "何もしません\n",
+            "ステートコントローラーを一時的に無効にするときなどに使用します"
+        ]
+    },
+    "Offset" : {
+        "prefix": "Offset",
+        "body": [
+            "[State , Offset]",
+            "Type = Offset",
+            "Trigger1 = ${1:1}",
+            "X = $2",
+            "Y = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "プレイヤースプライトの表示位置を変更します"
+        ]
+    },
+    "PalFX" : {
+        "prefix": "PalFX",
+        "body": [
+            "[State , PalFX]",
+            "Type = PalFX",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:0}",
+            "Color = ${3:256}",
+            "Add = ${4:0}, ${5:0}, ${6:0}",
+            "Mul = ${7:256}, ${8:256}, ${9:256}",
+            "SinAdd = ${10:0}, ${11:0}, ${12:0}, ${13:0}",
+            "InvertAll = ${14:0}",
+            "Persistent = ${15:1}",
+            "IgnoreHitPause = ${16:0}"
+        ],
+        "description": [
+            "キャラクターなどの色を変更します"
+        ]
+    },
+    "ParentVarAdd" : {
+        "prefix": "ParentVarAdd",
+        "body": [
+            "[State , ParentVarAdd]",
+            "Type = ParentVarAdd",
+            "Trigger1 = ${1:1}",
+            "var($2) = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "Helperの親の変数に値を加算します\n",
+            "Helperのステート内で記述します"
+        ]
+    },
+    "ParentVarSet" : {
+        "prefix": "ParentVarSet",
+        "body": [
+            "[State , ParentVarSet]",
+            "Type = ParentVarSet",
+            "Trigger1 = ${1:1}",
+            "var($2) = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "Helperの親の変数を設定します\n",
+            "Helperのステート内で記述します"
+        ]
+    },
+    "Pause" : {
+        "prefix": "Pause",
+        "body": [
+            "[State , Pause]",
+            "Type = Pause",
+            "Trigger1 = ${1:1}",
+            "Time = $2",
+            "MoveTime = ${3:0}",
+            "PauseBG = ${4:1}",
+            "EndCmdBufTime = ${5:0}",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "時間を停止します"
+        ]
+    },
+    "PlaySnd" : {
+        "prefix": "PlaySnd",
+        "body": [
+            "[State , PlaySnd]",
+            "Type = PlaySnd",
+            "Trigger1 = ${1:1}",
+            "Channel = ${2:-1}",
+            "value = $3, $4",
+            "Volume = ${5:0}",
+            "LowPriority = $6",
+            "FreqMul = ${7:1.0}",
+            "Loop = ${8:0}",
+            "Pan = ${9:0}",
+            "AbsPan = $10",
+            "Persistent = ${11:1}",
+            "IgnoreHitPause = ${12:0}"
+        ],
+        "description": [
+            "音を鳴らします"
+        ]
+    },
+    "PlayerPush" : {
+        "prefix": "PlayerPush",
+        "body": [
+            "[State , PlayerPush]",
+            "Type = PlayerPush",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "プレイヤーのぶつかり判定の有無を指定します"
+        ]
+    },
+    "PosAdd" : {
+        "prefix": "PosAdd",
+        "body": [
+            "[State , PosAdd]",
+            "Type = PosAdd",
+            "Trigger1 = ${1:1}",
+            "X = ${2:0}",
+            "Y = ${3:0}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "プレイヤーの座標を指定した値だけ加算します"
+        ]
+    },
+    "PosFreeze" : {
+        "prefix": "PosFreeze",
+        "body": [
+            "[State , PosFreeze]",
+            "Type = PosFreeze",
+            "Trigger1 = ${1:1}",
+            "value = ${2:1}",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "一時的に速度・重力による移動を無効化します"
+        ]
+    },
+    "PosSet" : {
+        "prefix": "PosSet",
+        "body": [
+            "[State , PosSet]",
+            "Type = PosSet",
+            "Trigger1 = ${1:1}",
+            "X = ${2:0}",
+            "Y = ${3:0}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "プレイヤーの座標を設定します"
+        ]
+    },
+    "PowerAdd" : {
+        "prefix": "PowerAdd",
+        "body": [
+            "[State , PowerAdd]",
+            "Type = PowerAdd",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "指定した値をパワーゲージに加算します"
+        ]
+    },
+    "PowerSet" : {
+        "prefix": "PowerSet",
+        "body": [
+            "[State , PowerSet]",
+            "Type = PowerSet",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "パワーゲージを指定値に変更します"
+        ]
+    },
+    "Projectile" : {
+        "prefix": "Projectile",
+        "body": [
+            "[State , Projectile]",
+            "Type = Projectile",
+            "Trigger1 = ${1:1}",
+            "Attr = $2",
+            "HitFlag = ${3:MAF}",
+            "GuardFlag = ${4:MA}",
+            "AffectTeam = ${5:E}",
+            "AnimType = ${6:L}",
+            "Air.AnimType = $7",
+            "Fall.AnimType = $8",
+            "Ground.Type = ${9:H}",
+            "Air.Type = $10",
+            "ProjID = $11",
+            "ProjRemove = ${12:1}",
+            "ProjRemoveTime = ${13:-1}",
+            "ProjShadow = ${14:0}, ${15:0}, ${16:0}",
+            "ProjMissTime = ${17:0}",
+            "ProjHits = ${18:1}",
+            "ProjPriority = ${19:1}",
+            "ProjHitAnim = ${20:-1}",
+            "ProjRemAnim = $21",
+            "ProjCancelAnim = $22",
+            "Velocity = ${23:0}, ${24:0}",
+            "VelMul = ${25:1}, ${26:1}",
+            "RemVelocity = ${27:0}, ${28:0}",
+            "Accel = ${29:0}, ${30:0}",
+            "ProjScale = ${31:1}, ${32:1}",
+            "ID = ${33:0}",
+            "ChainID = ${34:-1}",
+            "NoChainID = ${35:-1}",
+            "Kill = ${36:1}",
+            "Guard.Kill = ${37:1}",
+            "Fall.Kill = ${38:1}",
+            "HitOnce = ${39:0}",
+            "Air.Juggle = ${40:0}",
+            "Damage = ${41:0}, ${42:0}",
+            "GetPower = $43",
+            "GivePower = $44",
+            "PauseTime = ${45:0}, ${46:0}",
+            "NumHits = ${47:1}",
+            "HitSound = $48, $49",
+            "GuardSound = $50, $51",
+            "Priority = ${52:4}, ${53:H}",
+            "P1StateNo = ${54:-1}",
+            "P2StateNo = ${55:-1}",
+            "P2GetP1State = $56",
+            "P1SprPriority = ${57:1}",
+            "P2SprPriority = ${58:0}",
+            "ForceStand = $59",
+            "ForceNoFall = ${60:0}",
+            "Fall = ${61:0}",
+            "Fall.Damage = ${62:0}",
+            "Fall.XVelocity = $63",
+            "Fall.YVelocity = ${64:-4.5}",
+            "Fall.Recover = ${65:1}",
+            "Fall.RecoverTime = ${66:4}",
+            "SparkNo = $67",
+            "Guard.SparkNo = $68",
+            "SparkXY = ${69:0}, ${70:0}",
+            "P1Facing = $71",
+            "P1GetP2Facing = ${72:0}",
+            "Snap = $73",
+            "P2Facing = $74",
+            "Ground.HitTime = ${75:0}",
+            "Ground.SlideTime = ${76:0}",
+            "Ground.Velocity = ${77:0}, ${78:0}",
+            "Ground.CornerPush.VelOff = $79",
+            "Air.HitTime = ${80:20}",
+            "Air.Fall = $81",
+            "Air.Velocity = ${82:0}, ${83:0}",
+            "Air.CornerPush.VelOff = $84",
+            "Down.Bounce = ${85:0}",
+            "Down.HitTime = $86",
+            "Down.Velocity = $87",
+            "Down.CornerPush.VelOff = $88",
+            "Guard.Velocity = $89",
+            "Guard.HitTime = $90",
+            "Guard.SlideTime = $91",
+            "Guard.CtrlTime = $92",
+            "Guard.Dist = $93",
+            "Guard.PauseTime = $94",
+            "Guard.CornerPush.VelOff = $95",
+            "AirGuard.Velocity = $96",
+            "AirGuard.CtrlTime = $97",
+            "AirGuard.CornerPush.VelOff = $98",
+            "YAccel = $99",
+            "PalFX.Time = ${100:0}",
+            "PalFX.Color = ${101:256}",
+            "PalFX.Add = ${102:0}, ${103:0}, ${104:0}",
+            "PalFX.Mul = ${105:256}, ${106:256}, ${107:256}",
+            "PalFX.SinAdd = ${108:0}, ${109:0}, ${110:0}, ${111:0}",
+            "PalFX.InvertAll = ${112:0}",
+            "EnvShake.Time = $113",
+            "EnvShake.Ampl = ${114:-4}",
+            "EnvShake.Phase = ${115:0}",
+            "EnvShake.Freq = ${116:60}",
+            "Fall.EnvShake.Time = $117",
+            "Fall.EnvShake.Ampl = ${118:-4}",
+            "Fall.EnvShake.Phase = ${119:0}",
+            "Fall.EnvShake.Freq = ${120:60}",
+            "Offset = ${121:0}, ${122:0}",
+            "PosType = ${123:P1}",
+            "ProjSprPriority = ${124:3}",
+            "ProjStageBound =${125:40}",
+            "ProjEdgeBound = ${126:40}",
+            "ProjHeightBound = ${127:-240}, ${128:1}",
+            "ProjAnim = ${129:0}",
+            "PauseMoveTime = ${130:0}",
+            "SuperMoveTime = ${131:0}",
+            "AfterImage.Time = ${132:1}",
+            "AfterImage.Length = ${133:20}",
+            "AfterImage.TimeGap = ${134:1}",
+            "AfterImage.FrameGap = ${135:4}",
+            "AfterImage.PalColor = ${136:256}",
+            "AfterImage.PalInvertAll = ${137:0}",
+            "AfterImage.PalBright = ${138:30}, ${139:30}, ${140:30}",
+            "AfterImage.PalContrast = ${141:120}, ${142:120}, ${143:220}",
+            "AfterImage.PalPostBright = ${144:120}, ${145:120}, ${146:220}",
+            "AfterImage.PalAdd = ${147:10}, ${148:10}, ${149:25}",
+            "AfterImage.PalMul = ${150:.65}, ${151:.65}, ${152:.75}",
+            "Attack.Width = $153",
+            "Persistent = ${154:1}",
+            "IgnoreHitPause = ${155:0}"
+        ],
+        "description": [
+            "飛び道具を出現させます"
+        ]
+    },
+    "RemoveExplod" : {
+        "prefix": "RemoveExplod",
+        "body": [
+            "[State , RemoveExplod]",
+            "Type = RemoveExplod",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "Explodを消去します"
+        ]
+    },
+    "ReversalDef" : {
+        "prefix": "ReversalDef",
+        "body": [
+            "[State , ReversalDef]",
+            "Type = ReversalDef",
+            "Trigger1 = ${1:1}",
+            "Reversal.Attr = $2",
+            "Attr = $3",
+            "HitFlag = ${4:MAF}",
+            "GuardFlag = $5",
+            "AffectTeam = ${6:E}",
+            "AnimType = ${7:L}",
+            "Air.AnimType = $8",
+            "Fall.AnimType = $9",
+            "Ground.Type = ${10:H}",
+            "Air.Type = $11",
+            "ID = ${12:0}",
+            "ChainID = ${13:-1}",
+            "NoChainID = ${14:-1}",
+            "Kill = ${15:1}",
+            "Guard.Kill = ${16:1}",
+            "Fall.Kill = ${17:1}",
+            "HitOnce = ${18:0}",
+            "Air.Juggle = ${19:0}",
+            "Damage = ${20:0}, ${21:0}",
+            "GetPower = $22",
+            "GivePower = $23",
+            "PauseTime = ${24:0}, ${25:0}",
+            "NumHits = ${26:1}",
+            "HitSound = $27, $28",
+            "GuardSound = $29, $30",
+            "Priority = ${31:4}, ${32:H}",
+            "P1StateNo = ${33:-1}",
+            "P2StateNo = ${34:-1}",
+            "P2GetP1State = $35",
+            "P1SprPriority = ${36:1}",
+            "P2SprPriority = ${37:0}",
+            "ForceStand = $38",
+            "ForceNoFall = ${39:0}",
+            "Fall = ${40:0}",
+            "Fall.Damage = ${41:0}",
+            "Fall.XVelocity = $42",
+            "Fall.YVelocity = ${43:-4.5}",
+            "Fall.Recover = ${44:1}",
+            "Fall.RecoverTime = ${45:4}",
+            "SparkNo = $46",
+            "Guard.SparkNo = $47",
+            "SparkXY = ${48:0}, ${49:0}",
+            "P1Facing = ${50:0}",
+            "P1GetP2Facing = ${51:0}",
+            "Snap = $52",
+            "P2Facing = ${53:0}",
+            "Ground.HitTime = ${54:0}",
+            "Ground.SlideTime = ${55:0}",
+            "Ground.Velocity = ${56:0}, ${57:0}",
+            "Ground.CornerPush.VelOff = $58",
+            "Air.HitTime = ${59:20}",
+            "Air.Fall = $60",
+            "Air.Velocity = ${61:0}, ${62:0}",
+            "Air.CornerPush.VelOff = $63",
+            "Down.Bounce = ${64:0}",
+            "Down.HitTime = $65",
+            "Down.Velocity = $66",
+            "Down.CornerPush.VelOff = $67",
+            "Guard.Velocity = $68",
+            "Guard.HitTime = $69",
+            "Guard.SlideTime = $70",
+            "Guard.CtrlTime = $71",
+            "Guard.Dist = $72",
+            "Guard.PauseTime = $73",
+            "Guard.CornerPush.VelOff = $74",
+            "AirGuard.Velocity = $75",
+            "AirGuard.CtrlTime = $76",
+            "AirGuard.CornerPush.VelOff = $77",
+            "YAccel = $78",
+            "PalFX.Time = ${79:0}",
+            "PalFX.Color = ${80:256}",
+            "PalFX.Add = ${81:0}, ${82:0}, ${83:0}",
+            "PalFX.Mul = ${84:256}, ${85:256}, ${86:256}",
+            "PalFX.SinAdd = ${87:0}, ${88:0}, ${89:0}, ${90:0}",
+            "PalFX.InvertAll = ${91:0}",
+            "EnvShake.Time = $92",
+            "EnvShake.Ampl = ${93:-4}",
+            "EnvShake.Phase = ${94:0}",
+            "EnvShake.Freq = ${95:60}",
+            "Fall.EnvShake.Time = $96",
+            "Fall.EnvShake.Ampl = ${97:-4}",
+            "Fall.EnvShake.Phase = ${98:0}",
+            "Fall.EnvShake.Freq = ${99:60}",
+            "Persistent = ${100:1}",
+            "IgnoreHitPause = ${101:0}"
+        ],
+        "description": [
+            "プレイヤーの攻撃判定と、相手の攻撃判定が接触したときの動作を定義します"
+        ]
+    },
+    "ScreenBound" : {
+        "prefix": "ScreenBound",
+        "body": [
+            "[State , ScreenBound]",
+            "Type = ScreenBound",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "MoveCamera = ${3:0}, ${4:0}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "カメラがプレイヤーを追うか否かを設定します"
+        ]
+    },
+    "SelfState" : {
+        "prefix": "SelfState",
+        "body": [
+            "[State , SelfState]",
+            "Type = SelfState",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Ctrl = ${3:Ctrl}",
+            "Anim = ${4:-1}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "ステート・アニメーション・コントロールを変更しますが、ChangeStateと異なり、相手のステートを参照している場合、自分のステートに戻ることができます"
+        ]
+    },
+    "SndPan" : {
+        "prefix": "SndPan",
+        "body": [
+            "[State , SndPan]",
+            "Type = SndPan",
+            "Trigger1 = ${1:1}",
+            "Channel = $2",
+            "Pan = ${3:0}",
+            "AbsPan = $4",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "音が再生される位置を調整します"
+        ]
+    },
+    "SprPriority" : {
+        "prefix": "SprPriority",
+        "body": [
+            "[State , SprPriority]",
+            "Type = SprPriority",
+            "Trigger1 = ${1:1}",
+            "value = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "プレイヤーのスプライト表示優先度を変更します"
+        ]
+    },
+    "StateTypeSet" : {
+        "prefix": "StateTypeSet",
+        "body": [
+            "[State , StateTypeSet]",
+            "Type = StateTypeSet",
+            "Trigger1 = ${1:1}",
+            "StateType = ${2:U}",
+            "Physics = ${3:U}",
+            "MoveType = ${4:U}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "プレイヤーのステートタイプ、行動状態、物理状態を変更します"
+        ]
+    },
+    "StopSnd" : {
+        "prefix": "StopSnd",
+        "body": [
+            "[State , StopSnd]",
+            "Type = StopSnd",
+            "Trigger1 = ${1:1}",
+            "Channel = $2",
+            "Persistent = ${3:1}",
+            "IgnoreHitPause = ${4:0}"
+        ],
+        "description": [
+            "特定チャンネルの音を止めます"
+        ]
+    },
+    "SuperPause" : {
+        "prefix": "SuperPause",
+        "body": [
+            "[State , SuperPause]",
+            "Type = SuperPause",
+            "Trigger1 = ${1:1}",
+            "Time = ${2:30}",
+            "MoveTime = ${3:0}",
+            "PauseBG = ${4:1}",
+            "EndCmdBufTime = ${5:0}",
+            "Darken = ${6:1}",
+            "Anim = ${7:30}",
+            "Pos = ${8:0}, ${9:0}",
+            "P2DefMul = ${10:0}",
+            "PowerAdd = ${11:0}",
+            "UnHitTable = ${12:1}",
+            "Sound = ${13:-1}",
+            "Persistent = ${14:1}",
+            "IgnoreHitPause = ${15:0}"
+        ],
+        "description": [
+            "必殺技演出用に時間を停止します"
+        ]
+    },
+    "TagIn" : {
+        "prefix": "TagIn",
+        "body": [
+            "[State , TagIn]",
+            "Type = TagIn",
+            "Trigger1 = ${1:1}",
+            "StateNo = $2",
+            "PartnerStateNo = ${3:-1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "自分とパートナーを指定のステートに移動します\n",
+            "パートナーが存在する場合に使用可能です"
+        ]
+    },
+    "TagOut" : {
+        "prefix": "TagOut",
+        "body": [
+            "[State , TagOut]",
+            "Type = TagOut",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "実行時のStateDefを読み直しますが、ChangeStateなどと異なりTimeはリセットされません"
+        ]
+    },
+    "TargetBind" : {
+        "prefix": "TargetBind",
+        "body": [
+            "[State , TargetBind]",
+            "Type = TargetBind",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "Time = ${3:1}",
+            "Pos = ${4:0}, ${5:0}",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "プレイヤーの位置を基準にターゲットの位置を固定します"
+        ]
+    },
+    "TargetDrop" : {
+        "prefix": "TargetDrop",
+        "body": [
+            "[State , TargetDrop]",
+            "Type = TargetDrop",
+            "Trigger1 = ${1:1}",
+            "ExcludeID = ${2:-1}",
+            "KeepOne = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "複数のターゲットがいる場合、特定のもの以外をターゲットから除外します"
+        ]
+    },
+    "TargetFacing" : {
+        "prefix": "TargetFacing",
+        "body": [
+            "[State , TargetFacing]",
+            "Type = TargetFacing",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "value = ${3:1}",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "ターゲットの向きを変更します"
+        ]
+    },
+    "TargetLifeAdd" : {
+        "prefix": "TargetLifeAdd",
+        "body": [
+            "[State , TargetLifeAdd]",
+            "Type = TargetLifeAdd",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "Absolute = ${3:1}",
+            "Kill = ${4:1}",
+            "value = $5",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "ターゲットのライフに指定した値を加算します"
+        ]
+    },
+    "TargetPowerAdd" : {
+        "prefix": "TargetPowerAdd",
+        "body": [
+            "[State , TargetPowerAdd]",
+            "Type = TargetPowerAdd",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "value = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "ターゲットのパワーゲージに指定した値を加算します"
+        ]
+    },
+    "TargetState" : {
+        "prefix": "TargetState",
+        "body": [
+            "[State , TargetState]",
+            "Type = TargetState",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "value = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "ターゲットのステートを指定値に変更します"
+        ]
+    },
+    "TargetVelAdd" : {
+        "prefix": "TargetVelAdd",
+        "body": [
+            "[State , TargetVelAdd]",
+            "Type = TargetVelAdd",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "X = $3",
+            "Y = $4",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "ターゲットの速度に指定した値を加算します"
+        ]
+    },
+    "TargetVelSet" : {
+        "prefix": "TargetVelSet",
+        "body": [
+            "[State , TargetVelSet]",
+            "Type = TargetVelSet",
+            "Trigger1 = ${1:1}",
+            "ID = ${2:-1}",
+            "X = $3",
+            "Y = $4",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "ターゲットの速度を指定値に変更します"
+        ]
+    },
+    "Trans" : {
+        "prefix": "Trans",
+        "body": [
+            "[State , Trans]",
+            "Type = Trans",
+            "Trigger1 = ${1:1}",
+            "Trans = $2",
+            "Alpha = ${3:256}, ${4:0}",
+            "Persistent = ${5:1}",
+            "IgnoreHitPause = ${6:0}"
+        ],
+        "description": [
+            "一時的にスプライトを透過します"
+        ]
+    },
+    "Turn" : {
+        "prefix": "Turn",
+        "body": [
+            "[State , Turn]",
+            "Type = Turn",
+            "Trigger1 = ${1:1}"
+        ],
+        "description": [
+            "向きを反転します"
+        ]
+    },
+    "VarAdd" : {
+        "prefix": "VarAdd",
+        "body": [
+            "[State , VarAdd]",
+            "Type = VarAdd",
+            "Trigger1 = ${1:1}",
+            "var($2) = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "指定変数に値を加算します"
+        ]
+    },
+    "VarRandom" : {
+        "prefix": "VarRandom",
+        "body": [
+            "[State , VarRandom]",
+            "Type = VarRandom",
+            "Trigger1 = ${1:1}",
+            "v = $3",
+            "Range = ${5:0}, ${6:1000}",
+            "Persistent = ${7:1}",
+            "IgnoreHitPause = ${8:0}"
+        ],
+        "description": [
+            "指定変数に乱数を代入します\n",
+            "fvarに代入することはできません"
+        ]
+    },
+    "VarRangeSet" : {
+        "prefix": "VarRangeSet",
+        "body": [
+            "[State , VarRangeSet]",
+            "Type = VarRangeSet",
+            "Trigger1 = ${1:1}",
+            "value = $3",
+            ";fvalue = ",
+            "First = ${4:0}",
+            "Last = $5",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "複数の変数に値をまとめて代入します"
+        ]
+    },
+    "VarSet" : {
+        "prefix": "VarSet",
+        "body": [
+            "[State , VarSet]",
+            "Type = VarSet",
+            "Trigger1 = ${1:1}",
+            "var($2) = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "指定変数に値を代入します"
+        ]
+    },
+    "VelAdd" : {
+        "prefix": "VelAdd",
+        "body": [
+            "[State , VelAdd]",
+            "Type = VelAdd",
+            "Trigger1 = ${1:1}",
+            "X = $2",
+            "Y = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "指定の向きに速度を加算します"
+        ]
+    },
+    "VelMul" : {
+        "prefix": "VelMul",
+        "body": [
+            "[State , VelMul]",
+            "Type = VelMul",
+            "Trigger1 = ${1:1}",
+            "X = $2",
+            "Y = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "指定の向きに速度を乗算します"
+        ]
+    },
+    "VelSet" : {
+        "prefix": "VelSet",
+        "body": [
+            "[State , VelSet]",
+            "Type = VelSet",
+            "Trigger1 = ${1:1}",
+            "X = $2",
+            "Y = $3",
+            "Persistent = ${4:1}",
+            "IgnoreHitPause = ${5:0}"
+        ],
+        "description": [
+            "指定の向きに速度を変更します"
+        ]
+    },
+    "Width" : {
+        "prefix": "Width",
+        "body": [
+            "[State , Width]",
+            "Type = Width",
+            "Trigger1 = ${1:1}",
+            "Edge = ${2:0}, ${3:0}",
+            "Player = ${4:0}, ${5:0}",
+            "Persistent = ${6:1}",
+            "IgnoreHitPause = ${7:0}"
+        ],
+        "description": [
+            "プレイヤーの幅を変更します"
+        ]
+    }
+}

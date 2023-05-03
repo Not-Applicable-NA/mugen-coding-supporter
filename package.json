@@ -1,0 +1,94 @@
+{
+  "name": "mugen-coding-supporter",
+  "displayName": "M.U.G.E.N coding supporter",
+  "description": "Support coding for M.U.G.E.N .def .cns .cmd .st files.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onLanguage:def",
+    "onLanguage:cmd",
+    "onLanguage:state"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [{
+      "id": "def",
+      "aliases": ["MUGEN DEF"],
+      "extensions": [".def"],
+      "configuration": "./language-configuration.json"
+    },{
+      "id": "cmd",
+      "aliases": ["MUGEN COMMAND"],
+      "extensions": [".cmd"],
+      "configuration": "./language-configuration.json"
+    },{
+      "id": "state",
+      "aliases": ["MUGEN STATE"],
+      "extensions": [".cns", ".st"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "def",
+      "scopeName": "source.mugen",
+      "path": "./syntaxes/mugen.tmLanguage.json"
+    },{
+      "language": "cmd",
+      "scopeName": "source.mugen",
+      "path": "./syntaxes/mugen.tmLanguage.json"
+    },{
+      "language": "state",
+      "scopeName": "source.mugen",
+      "path": "./syntaxes/mugen.tmLanguage.json"
+    }],
+    "snippets": [
+      {
+        "language": "def",
+        "path": "./snippets/def.snippet.json"
+      },
+      {
+        "language": "cmd",
+        "path": "./snippets/cmd.snippet.json"
+      },
+			{
+				"language": "state",
+				"path": "./snippets/state.snippet.json"
+			},
+			{
+				"language": "state",
+				"path": "./snippets/trigger.snippet.json"
+			}
+    ],
+    "commands":{
+      "title": "Generate Null States",
+      "command": "extension.generateNull",
+      "category": "State Controller"
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.77.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3",
+    "@vscode/test-electron": "^2.2.0"
+  }
+}

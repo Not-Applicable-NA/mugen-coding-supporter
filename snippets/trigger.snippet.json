@@ -1,0 +1,617 @@
+{
+    "Abs" : {
+        "prefix": "Abs",
+        "body": "Abs($1)",
+        "description": "絶対値を返します"
+    },
+    "Acos" : {
+        "prefix": "Acos",
+        "body": "Acos($1)",
+        "description": "ラジアンの逆余弦を返します"
+    },
+    "Alive" : {
+        "prefix": "Alive",
+        "body": "Alive",
+        "description": "生死判定を返します"
+    },
+    "Anim" : {
+        "prefix": "Anim",
+        "body": "Anim",
+        "description": "現在のアニメ番号を返します"
+    },
+    "AnimElem" : {
+        "prefix": "AnimElem",
+        "body": "AnimElem = $1",
+        "description": "現在のアニメのコマとその経過時間を判断します"
+    },
+    "AnimElemNo" : {
+        "prefix": "AnimElemNo",
+        "body": "AnimElemNo($1)",
+        "description": "現在のアニメのnフレーム後のコマを返します"
+    },
+    "AnimElemTime" : {
+        "prefix": "AnimElemTime",
+        "body": "AnimElemTime($1)",
+        "description": "現在のアニメがnコマ目になってからの経過時間を返します"
+    },
+    "AnimExist" : {
+        "prefix": "AnimExist",
+        "body": "AnimExist($1)",
+        "description": "指定したアニメが存在するかどうかを返します"
+    },
+    "AnimTime" : {
+        "prefix": "AnimTime",
+        "body": "AnimTime($1)",
+        "description": "現在のアニメが残り何フレームで終了するかを返します"
+    },
+    "Asin" : {
+        "prefix": "Asin",
+        "body": "Asin($1)",
+        "description": "ラジアンの逆正弦を返します"
+    },
+    "Atan" : {
+        "prefix": "Atan",
+        "body": "Atan($1)",
+        "description": "ラジアンの逆正接を返します"
+    },
+    "AuthorName" : {
+        "prefix": "AuthorName",
+        "body": "AuthorName = \"$1\"",
+        "description": "defファイルで設定してあるAuthorNameを判定し、真偽を返します"
+    },
+    "BackEdgeBodyDist" : {
+        "prefix": "BackEdgeBodyDist",
+        "body": "BackEdgeBodyDist",
+        "description": "プレイヤーの背面から、背面側の画面端までの距離を返します"
+    },
+    "BackEdgeDist" : {
+        "prefix": "BackEdgeDist",
+        "body": "BackEdgeDist",
+        "description": "プレイヤーの中心軸から、後ろ側の画面端までの距離を返します"
+    },
+    "CanRecover" : {
+        "prefix": "CanRecover",
+        "body": "CanRecover",
+        "description": "プレイヤーが空中受身を取れるかどうかを返します"
+    },
+    "Ceil" : {
+        "prefix": "Ceil",
+        "body": "Ceil($1)",
+        "description": "小数点以下を切り上げた結果を返します"
+    },
+    "Command" : {
+        "prefix": "Command",
+        "body": "Command = \"$1\"",
+        "description": "コマンド名が合っているかどうかを判断します"
+    },
+    "Const" : {
+        "prefix": "Const",
+        "body": "Const(${1|Data.Life,Data.Attack,Data.Defence,Data.Fall.Defence_Mul,Data.Liedown.Time,Data.AirJuggle,Data.SparkNo,Data.Guard.SparkNo,Data.KO.Echo,Data.IntPersistIndex,Data.FloatPersistIndex,Size.XScale,Size.YScale,Size.Ground.Back,Size.Ground.Front,Size.Air.Back,Size.Air.Front,Size.Height,Size.Attack.Dist,Size.Proj.Attack.Dist,Size.Proj.Doscale,Size.Head.Pos.X,Size.Head.Pos.Y,Size.Mid.Pos.X,Size.Mid.Pos.Y,Size.Shadowoffset,Size.Draw.offset.Y,Size.Draw.offset.X,Velocity.Walk.Fwd.X,Velocity.Walk.Back.X,Velocity.Run.Fwd.X,Velocity.Run.Fwd.Y,Velocity.Run.Back.X,Velocity.Run.Back.Y,Velocity.Jump.Y,Velocity.Jump.Neu.X,Velocity.Jump.Back.X,Velocity.Jump.Fwd.X,Velocity.Runjumo.Back.X,Velocity.Runjumo.Fwd.X,Velocity.AirJump.Y,Velocity.AirJump.Neu.X,Velocity.AirJump.Back.X,Velocity.AirJump.Fwd.X,Movement.Airjump.Num,Movement.AirJump.Height,Movement.YAccel,Movement.Stand.Friction,Movement.Crouch.Friction|})",
+        "description": "CNSで設定した各種定数を返します"
+    },
+    "Cos" : {
+        "prefix": "Cos",
+        "body": "Cos($1)",
+        "description": "ラジアンの余弦を返します"
+    },
+    "Ctrl" : {
+        "prefix": "Ctrl",
+        "body": "Ctrl",
+        "description": "プレイヤーのコントロールフラグを返します"
+    },
+    "DrawGame" : {
+        "prefix": "DrawGame",
+        "body": "DrawGame",
+        "description": "ラウンドで引き分けたかどうかを返します"
+    },
+    "E" : {
+        "prefix": "E",
+        "body": "E",
+        "description": "ネイピア数を返します"
+    },
+    "Exp" : {
+        "prefix": "Exp",
+        "body": "Exp($1)",
+        "description": "ネイピア数のべき乗を返します"
+    },
+    "FVar" : {
+        "prefix": "FVar",
+        "body": "FVar($1)",
+        "description": "実数変数FVarの値を返します"
+    },
+    "Facing" : {
+        "prefix": "Facing",
+        "body": "Facing",
+        "description": "プレイヤーの向きを返します"
+    },
+    "Floor" : {
+        "prefix": "Floor",
+        "body": "Floor($1)",
+        "description": "小数点以下を切り捨てた結果を返します"
+    },
+    "FrontEdgeBodyDist" : {
+        "prefix": "FrontEdgeBodyDist",
+        "body": "FrontEdgeBodyDist",
+        "description": "プレイヤー前面の当たり判定から、前方の画面端までの距離を返します"
+    },
+    "FrontEdgeDist" : {
+        "prefix": "FrontEdgeDist",
+        "body": "FrontEdgeDist",
+        "description": "プレイヤーの中心軸から、前面の画面端までの距離を返します"
+    },
+    "GameTime" : {
+        "prefix": "GameTime",
+        "body": "GameTime",
+        "description": "ゲームの経過時間を返します"
+    },
+    "GetHitVar" : {
+        "prefix": "GetHitVar",
+        "body": "GetHitVar(${1|AnimType,GroundType,AirType,Damage,HitShakeTime,HitTime,HitShakeTime,SlideTime,CtrlTime,RecoverTime,HitCount,FallCount,XVel,YVel,YAccel,Fall,Fall.Damage,Fall.XVel,Fall.YVel,Fall.Recover,Fall.RecoverTime,ChainID,Guarded,IsBound,XVelAdd,YVelAdd,Type,XOff,YOff,ZOff,Fall.Kill,Fall.Envshake.Time,Fall.Envshake.Freq,Fall.Envshake.Ampl,Fall.Envshake.Phase|})",
+        "description": "受けた攻撃に関する情報を参照します"
+    },
+    "HitCount" : {
+        "prefix": "HitCount",
+        "body": "HitCount",
+        "description": "そのステート内でのヒット数を返します"
+    },
+    "HitDefAttr" : {
+        "prefix": "HitDefAttr",
+        "body": "HitDefAttr = $1, $2",
+        "description": "HitDefコントローラのAttrの値を判定します"
+    },
+    "HitFall" : {
+        "prefix": "HitFall",
+        "body": "HitFall",
+        "description": "落下やられ状態にあるかどうかを返します"
+    },
+    "HitOver" : {
+        "prefix": "HitOver",
+        "body": "HitOver",
+        "description": "攻撃を受けてHitTimeが0になったかどうかを返します"
+    },
+    "HitPauseTime" : {
+        "prefix": "HitPauseTime",
+        "body": "HitPauseTime",
+        "description": "攻撃がヒットしたときの停止時間が終了するまでの時間を返します"
+    },
+    "HitShakeOver" : {
+        "prefix": "HitShakeOver",
+        "body": "HitShakeOver",
+        "description": "攻撃を受けてヒットシェイクが終了したかどうかを返します"
+    },
+    "HitVelX" : {
+        "prefix": "HitVelX",
+        "body": "HitVel X",
+        "description": "攻撃を受けたときのX速度を取得します"
+    },
+    "HitVelY" : {
+        "prefix": "HitVelY",
+        "body": "HitVel Y",
+        "description": "攻撃を受けたときのY速度を取得します"
+    },
+    "ID" : {
+        "prefix": "ID",
+        "body": "ID",
+        "description": "プレイヤーのIDを返します"
+    },
+    "IfElse" : {
+        "prefix": "IfElse",
+        "body": "IfElse($1, $2, $3)",
+        "description": "条件式の真偽に合わせた結果返します"
+    },
+    "InGuardDist" : {
+        "prefix": "InGuardDist",
+        "body": "InGuardDist",
+        "description": "敵の攻撃、または敵の飛び道具のガード範囲内にいるかどうかを返します"
+    },
+    "IsHelper" : {
+        "prefix": "IsHelper",
+        "body": "IsHelper",
+        "description": "ヘルパーかどうかを返します"
+    },
+    "IsHomeTeam" : {
+        "prefix": "IsHomeTeam",
+        "body": "IsHomeTeam",
+        "description": "プレイヤーのチームがホームかどうかを返します"
+    },
+    "Life" : {
+        "prefix": "Life",
+        "body": "Life",
+        "description": "現在のライフを返します"
+    },
+    "LifeMax" : {
+        "prefix": "LifeMax",
+        "body": "LifeMax",
+        "description": "ライフの最大値を返します"
+    },
+    "Ln" : {
+        "prefix": "Ln",
+        "body": "Ln($1)",
+        "description": "自然対数を返します"
+    },
+    "Log" : {
+        "prefix": "Log",
+        "body": "Log($1, $2)",
+        "description": "指定値の対数を返します"
+    },
+    "Lose" : {
+        "prefix": "Lose",
+        "body": "Lose",
+        "description": "ラウンドで敗北したかどうかを返します"
+    },
+    "LoseKO" : {
+        "prefix": "LoseKO",
+        "body": "LoseKO",
+        "description": "ラウンドをKOで敗北したかどうかを返します"
+    },
+    "LoseTime" : {
+        "prefix": "LoseTime",
+        "body": "LoseTime",
+        "description": "ラウンドを時間切れで敗北したかどうかを返します"
+    },
+    "MatchNo" : {
+        "prefix": "MatchNo",
+        "body": "MatchNo",
+        "description": "現在の試合数を返します"
+    },
+    "MatchOver" : {
+        "prefix": "MatchOver",
+        "body": "MatchOver",
+        "description": "試合で決着がついたかどうかを返します"
+    },
+    "MoveContact" : {
+        "prefix": "MoveContact",
+        "body": "MoveContact",
+        "description": "攻撃が相手に接触したかどうかを返します"
+    },
+    "MoveGuarded" : {
+        "prefix": "MoveGuarded",
+        "body": "MoveGuarded",
+        "description": "攻撃がガードされたかどうかを返します"
+    },
+    "MoveHit" : {
+        "prefix": "MoveHit",
+        "body": "MoveHit",
+        "description": "攻撃が相手にヒットしたかどうかを返します"
+    },
+    "MoveReversed" : {
+        "prefix": "MoveReversed",
+        "body": "MoveReversed",
+        "description": "攻撃が相手のReversalDefに取られたかどうかを返します"
+    },
+    "MoveType" : {
+        "prefix": "MoveType",
+        "body": "MoveType = $1",
+        "description": "現在のMoveTypeを判定し、真偽を返します"
+    },
+    "Name" : {
+        "prefix": "Name",
+        "body": "Name = \"$1\"",
+        "description": "defファイルで設定してあるNameを判定し、真偽を返します"
+    },
+    "NumEnemy" : {
+        "prefix": "NumEnemy",
+        "body": "NumEnemy",
+        "description": "現在の敵の数を返します"
+    },
+    "NumExplod" : {
+        "prefix": "NumExplod",
+        "body": "NumExplod",
+        "description": "プレイヤーが出現させているExplodの数を返します"
+    },
+    "NumHelper" : {
+        "prefix": "NumHelper",
+        "body": "NumHelper",
+        "description": "プレイヤーが出現させているHelperの数を返します"
+    },
+    "NumPartner" : {
+        "prefix": "NumPartner",
+        "body": "NumPartner",
+        "description": "現在のパートナー数を返します"
+    },
+    "NumProj" : {
+        "prefix": "NumProj",
+        "body": "NumProj",
+        "description": "プレイヤーが出現させているProjectileの数を返します"
+    },
+    "NumProjID" : {
+        "prefix": "NumProjID",
+        "body": "NumProjID",
+        "description": "プレイヤーが出現させている特定IDのProjectileの数を返します"
+    },
+    "NumTarget" : {
+        "prefix": "NumTarget",
+        "body": "NumTarget",
+        "description": "プレイヤーのターゲットの数を返します"
+    },
+    "P1Name" : {
+        "prefix": "P1Name",
+        "body": "P1Name = \"$1\"",
+        "description": "プレイヤー1のnameを判定し、真偽を返します"
+    },
+    "P2Name" : {
+        "prefix": "P2Name",
+        "body": "P2Name = \"$1\"",
+        "description": "プレイヤー2のnameを判定し、真偽を返します"
+    },
+    "P3Name" : {
+        "prefix": "P3Name",
+        "body": "P3Name = \"$1\"",
+        "description": "プレイヤー3のnameを判定し、真偽を返します"
+    },
+    "P4Name" : {
+        "prefix": "P4Name",
+        "body": "P4Name = \"$1\"",
+        "description": "プレイヤー4のnameを判定し、真偽を返します"
+    },
+    "P2BodyDist X" : {
+        "prefix": "P2BodyDist X",
+        "body": "P2BodyDist X",
+        "description": "プレイヤーからP2までの当たり判定同士のX方向の距離を返します"
+    },
+    "P2BodyDist Y" : {
+        "prefix": "P2BodyDist Y",
+        "body": "P2BodyDist Y",
+        "description": "プレイヤーからP2までの当たり判定同士のY方向の距離を返します"
+    },
+    "P2Dist X" : {
+        "prefix": "P2Dist X",
+        "body": "P2Dist X",
+        "description": "プレイヤーの軸からP2までのX方向の距離を返します"
+    },
+    "P2Dist Y" : {
+        "prefix": "P2Dist Y",
+        "body": "P2Dist Y",
+        "description": "プレイヤーの軸からP2までのX方向の距離を返します"
+    },
+    "P2Life" : {
+        "prefix": "P2Life",
+        "body": "P2Life",
+        "description": "相手の現在のライフを返します"
+    },
+    "P2MoveType" : {
+        "prefix": "P2MoveType",
+        "body": "P2MoveType = $1",
+        "description": "相手の現在のMoveTypeを判定し、真偽を返します"
+    },
+    "P2StateNo" : {
+        "prefix": "P2StateNo",
+        "body": "P2StateNo",
+        "description": "相手のステート番号を返します"
+    },
+    "P2StateType" : {
+        "prefix": "P2StateType",
+        "body": "P2StateType = $1",
+        "description": "相手の現在のStateTypeを判定し、真偽を返します"
+    },
+    "PalNo" : {
+        "prefix": "PalNo",
+        "body": "PalNo",
+        "description": "プレイヤーのパレット番号を返します"
+    },
+    "ParentDist X" : {
+        "prefix": "ParentDist X",
+        "body": "ParentDist X",
+        "description": "親までのX方向の距離を返します"
+    },
+    "ParentDist Y" : {
+        "prefix": "ParentDist Y",
+        "body": "ParentDist Y",
+        "description": "親までのY方向の距離を返します"
+    },
+    "PI" : {
+        "prefix": "PI",
+        "body": "PI",
+        "description": "円周率を返します"
+    },
+    "PlayerIDExist" : {
+        "prefix": "PlayerIDExist",
+        "body": "PlayerIDExist($1)",
+        "description": "指定したIDのプレイヤーが存在するかどうかを返します"
+    },
+    "Pos X" : {
+        "prefix": "Pos X",
+        "body": "Pos X",
+        "description": "プレイヤーのX座標を返します"
+    },
+    "Pos Y" : {
+        "prefix": "Pos Y",
+        "body": "Pos Y",
+        "description": "プレイヤーのY座標を返します"
+    },
+    "Power" : {
+        "prefix": "Power",
+        "body": "Power",
+        "description": "現在のパワーゲージ量を返します"
+    },
+    "PowerMax" : {
+        "prefix": "PowerMax",
+        "body": "PowerMax",
+        "description": "パワーゲージの最大量を返します"
+    },
+    "PrevStateNo" : {
+        "prefix": "PrevStateNo",
+        "body": "PrevStateNo",
+        "description": "直前のステート番号を返します"
+    },
+    "ProjCancelTime" : {
+        "prefix": "ProjCancelTime",
+        "body": "ProjCancelTime",
+        "description": "Projectileが相殺されてからの時間を返します"
+    },
+    "ProjContact" : {
+        "prefix": "ProjContact",
+        "body": "ProjContact",
+        "description": "Projectileが相手に接触したかどうかを返します"
+    },
+    "ProjContactTime" : {
+        "prefix": "ProjContactTime",
+        "body": "ProjContactTime",
+        "description": "指定したIDのProjectileが相手に接触してからの時間を返します"
+    },
+    "ProjGuarded" : {
+        "prefix": "ProjGuarded",
+        "body": "ProjGuarded",
+        "description": "Projectileがガードされたかどうかを返します"
+    },
+    "ProjGuardedTime" : {
+        "prefix": "ProjGuardedTime",
+        "body": "ProjGuardedTime",
+        "description": "指定したIDのProjectileがガードされてからの時間を返します"
+    },
+    "ProjHit" : {
+        "prefix": "ProjHit",
+        "body": "ProjHit",
+        "description": "Projectileがヒットしたかどうかを返します"
+    },
+    "ProjHitTime" : {
+        "prefix": "ProjHitTime",
+        "body": "ProjHitTime",
+        "description": "指定したIDのProjectileがヒットしてからの時間を返します"
+    },
+    "Random" : {
+        "prefix": "Random",
+        "body": "Random",
+        "description": "0以上999以下の乱数を返します"
+    },
+    "RootDist X" : {
+        "prefix": "RootDist X",
+        "body": "RootDist X",
+        "description": "ルートまでのX方向の距離を返します"
+    },
+    "RootDist Y" : {
+        "prefix": "RootDist Y",
+        "body": "RootDist Y",
+        "description": "ルートまでのY方向の距離を返します"
+    },
+    "RoundNo" : {
+        "prefix": "RoundNo",
+        "body": "RoundNo",
+        "description": "現在のラウンド数を返します"
+    },
+    "RoundState" : {
+        "prefix": "RoundState",
+        "body": "RoundState",
+        "description": "現在のラウンドの状態を返します"
+    },
+    "RoundsExisted" : {
+        "prefix": "RoundsExisted",
+        "body": "RoundsExisted",
+        "description": "プレイヤーが存在していたラウンドの数を返します"
+    },
+    "ScreenPos X" : {
+        "prefix": "ScreenPos X",
+        "body": "ScreenPos X",
+        "description": "プレイヤーの画面上での絶対X座標を返します"
+    },
+    "ScreenPos Y" : {
+        "prefix": "ScreenPos Y",
+        "body": "ScreenPos Y",
+        "description": "プレイヤーの画面上での絶対Y座標を返します"
+    },
+    "SelfAnimExist" : {
+        "prefix": "SelfAnimExist",
+        "body": "SelfAnimExist($1)",
+        "description": "指定したアニメが存在するかどうかを返しますが、AnimExistと異なり、相手に参照させるステートで実行した場合、相手のアニメを返します"
+    },
+    "Sin" : {
+        "prefix": "Sin",
+        "body": "Sin($1)",
+        "description": "ラジアンの正弦を返します"
+    },
+    "StandBy" : {
+        "prefix": "StandBy",
+        "body": "StandBy",
+        "description": "TagOutが使用されたかどうかを返します"
+    },
+    "StateNo" : {
+        "prefix": "StateNo",
+        "body": "StateNo",
+        "description": "現在のステート番号を返します"
+    },
+    "StateType" : {
+        "prefix": "StateType",
+        "body": "StateType = $1",
+        "description": "現在のStateTypeを判定し、真偽を返します"
+    },
+    "SysFVar" : {
+        "prefix": "SysFVar",
+        "body": "SysFVar($1)",
+        "description": "システムの実数変数を参照します"
+    },
+    "SysVar" : {
+        "prefix": "SysVar",
+        "body": "SysVar($1)",
+        "description": "システムの整数変数を参照します"
+    },
+    "Tan" : {
+        "prefix": "Tan",
+        "body": "Tan($1)",
+        "description": "ラジアンの正接を返します"
+    },
+    "TeamMode" : {
+        "prefix": "TeamMode",
+        "body": "TeamMode = \"$1\"",
+        "description": "現在のチームモードを判定し、真偽を返します"
+    },
+    "TeamSide" : {
+        "prefix": "TeamSide",
+        "body": "TeamSide",
+        "description": "プレイヤーが所属するチームを返します"
+    },
+    "TicksPerSecond" : {
+        "prefix": "TicksPerSecond",
+        "body": "TicksPerSecond",
+        "description": "1秒あたりのフレーム数を返します"
+    },
+    "Time" : {
+        "prefix": "Time",
+        "body": "Time",
+        "description": "ステートの経過時間を返します"
+    },
+    "TimeMod" : {
+        "prefix": "TimeMod",
+        "body": "TimeMod = $1, $2",
+        "description": "Timeの剰余計算を比較した結果を返します"
+    },
+    "UniqHitCount" : {
+        "prefix": "UniqHitCount",
+        "body": "UniqHitCount",
+        "description": "そのステート内でのヒット数を返しますが、HitCountと異なり、複数の相手にヒットした場合、その相手へのヒット数も加算されます"
+    },
+    "Var" : {
+        "prefix": "Var",
+        "body": "Var($1)",
+        "description": "整数変数Varの値を返します"
+    },
+    "Vel X" : {
+        "prefix": "Vel X",
+        "body": "Vel X",
+        "description": "プレイヤーのX方向の速度を返します"
+    },
+    "Vel Y" : {
+        "prefix": "Vel Y",
+        "body": "Vel Y",
+        "description": "プレイヤーのY方向の速度を返します"
+    },
+    "Win" : {
+        "prefix": "Win",
+        "body": "Win",
+        "description": "ラウンドで勝利したかどうかを返します"
+    },
+    "WinKO" : {
+        "prefix": "WinKO",
+        "body": "WinKO",
+        "description": "ラウンドをKOで勝利したかどうかを返します"
+    },
+    "WinPerfect" : {
+        "prefix": "WinPerfect",
+        "body": "WinPerfect",
+        "description": "ラウンドをKOかつライフ全快で勝利したかどうかを返します"
+    },
+    "WinTime" : {
+        "prefix": "WinTime",
+        "body": "WinTime",
+        "description": "ラウンドを時間切れで勝利したかどうかを返します"
+    }
+}
