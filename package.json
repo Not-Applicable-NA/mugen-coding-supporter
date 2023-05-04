@@ -4,6 +4,10 @@
   "description": "Support coding for M.U.G.E.N .def .cns .cmd .st files.",
   "version": "1.0.0",
   "publisher": "N/A",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Not-Applicable-NA/mugen-coding-supporter"
+  },
   "engines": {
     "vscode": "^1.77.0"
   },
