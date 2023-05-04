@@ -5,22 +5,19 @@ import * as fs from 'fs';
 export async function generateNull() {
 
     const input = await vscode.window.showInputBox({
-        'prompt': '生成したいNullステコンの数を入力してください。',
+        'prompt': '生成したいNullステコンの数を入力してください',
         'validateInput': validateInteger
     });
 
     if (input !== undefined) {
-        const outputFolders = await vscode.window.showOpenDialog({
-            "canSelectFiles": false,
-            "canSelectFolders": true,
-            "canSelectMany": false,
-            "title": "ステコンの保存先を選択してください。",
+        const fileUri = await vscode.window.showSaveDialog({
+            'filters': {
+                'States': ['st', 'cns']
+            },
+            'title': '名前を付けてステコンを保存',
         });
-        if (outputFolders !== undefined && outputFolders[0]) {
-            const folderUri = outputFolders[0];
-            let fileUri: vscode.Uri = vscode.Uri.joinPath(folderUri, input + 'Null.st');
+        if (fileUri !== undefined) {
             if (!fs.existsSync(fileUri.fsPath)) {
-
                 vscode.window.showInformationMessage('生成中...');
 
                 const initialize: Uint8Array = Buffer.from('');
@@ -35,40 +32,10 @@ export async function generateNull() {
                 await vscode.window.showTextDocument(fileUri);
 
             } else {
-                vscode.window.showErrorMessage(fileUri.fsPath + '\nファイルがすでに存在しています。');
+                vscode.window.showErrorMessage('すでに存在しているファイルに上書きすることはできません。');
             }
         }
     }
-
-    // vscode.window.showInputBox(
-    //     {
-    //         'title': '指定された数のNullステートコントローラーを生成します',
-    //         'prompt': '生成したいNullステコンの数を入力してください',
-    //         'validateInput': validateInteger
-    //     }
-    // ).then((input) => {
-    //     if (input !== undefined) {
-    //         const intValue = parseInt(input);
-    //         if (vscode.window.activeTextEditor) {
-    //             const folder = vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor.document.uri);
-    //             if (folder) {
-    //                 const uri = vscode.Uri.parse(`untitled://${folder.uri.fsPath}/${input}null`);
-    //                 const buf = Buffer.from(`${input}\n`);
-    //                 vscode.workspace.fs.writeFile(uri, buf).then(() => {
-    //                     vscode.window.showTextDocument(uri);
-    //                 });
-    //             }
-    //         }
-    //         // const buf = Buffer.from(`${input}\n`);
-    //         // vscode.workspace.fs.writeFile(uri, buf).then(() => {
-    //         //     vscode.window.showTextDocument(uri);
-    //         // });
-    //         // for (let i = 1; i <= intValue; i++) {
-    //         //     const buf = Buffer.from(i.toString() + '\n', 'utf-8');
-    //         //     vscode.workspace.fs.writeFile(uri, buf);
-    //         // }
-    //     }
-    // });
 }
 
 function validateInteger(input: string) {
