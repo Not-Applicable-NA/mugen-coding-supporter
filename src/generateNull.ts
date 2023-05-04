@@ -27,12 +27,12 @@ export async function generateNull() {
                     const nullBuf: Uint8Array = Buffer.from(`[State ${i}]${os.EOL}Type=Null${os.EOL}Trigger1=0${os.EOL}`);
                     await vscode.workspace.fs.writeFile(fileUri, Buffer.concat([content, nullBuf]));
                 }
-                vscode.window.showInformationMessage('完了しました。');
+                vscode.window.showInformationMessage('完了しました');
 
                 await vscode.window.showTextDocument(fileUri);
 
             } else {
-                vscode.window.showErrorMessage('すでに存在しているファイルに上書きすることはできません。');
+                vscode.window.showErrorMessage('すでに存在しているファイルに上書きすることはできません');
             }
         }
     }
