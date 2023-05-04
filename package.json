@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "publisher": "N/A",
   "repository": {
-    "type": "git",
+    "type": "url",
     "url": "https://github.com/Not-Applicable-NA/mugen-coding-supporter"
   },
   "engines": {
