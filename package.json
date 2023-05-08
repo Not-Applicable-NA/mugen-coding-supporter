@@ -1,9 +1,9 @@
 {
   "name": "mugen-coding-supporter",
   "displayName": "M.U.G.E.N coding supporter",
-  "description": "Support coding for M.U.G.E.N .def .cns .cmd .st files.",
+  "description": "Supports editing M.U.G.E.N .def .cns .cmd .st files.",
   "version": "1.0.0",
-  "publisher": "N/A",
+  "publisher": "Not_Applicable",
   "engines": {
     "vscode": "^1.77.0"
   },
