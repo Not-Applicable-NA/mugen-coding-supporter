@@ -20,6 +20,7 @@
     "onLanguage:cmd",
     "onLanguage:state"
   ],
+  "icon": "images/icon.png",
   "main": "./out/extension.js",
   "contributes": {
     "languages": [{
@@ -52,14 +53,14 @@
       "path": "./syntaxes/mugen.tmLanguage.json"
     }],
     "snippets": [{
-        "language": "def",
-        "path": "./snippets/def.snippet.json"
+      "language": "def",
+      "path": "./snippets/def.snippet.json"
     },{
-        "language": "cmd",
-        "path": "./snippets/cmd.snippet.json"
+      "language": "cmd",
+      "path": "./snippets/cmd.snippet.json"
     },{
-				"language": "state",
-				"path": "./snippets/state.snippet.json"
+      "language": "state",
+      "path": "./snippets/state.snippet.json"
     }],
     "commands":{
       "title": "Generate Null States",
