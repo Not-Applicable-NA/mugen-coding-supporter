@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as stateProvidors from './stateProvidors';
+import * as completionItems from './completionItems';
 import { generateNull } from './generateNull';
 
 // This method is called when your extension is activated
@@ -31,6 +32,12 @@ export function activate(context: vscode.ExtensionContext) {
 		new stateProvidors.StateReferenceProvidor()
 	);
 	context.subscriptions.push(referenceProvider);
+
+	const triggerCompletions = vscode.languages.registerCompletionItemProvider(
+		[{ "scheme" : "file", "language" : "state" }],
+		new completionItems.triggerCompletionItemProvidor()
+	);
+	context.subscriptions.push(triggerCompletions);
 
 	const generateNullCommand = vscode.commands.registerCommand(
 		'extension.generateNull', generateNull
