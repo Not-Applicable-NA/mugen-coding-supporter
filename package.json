@@ -11,6 +11,10 @@
     "Programming Languages",
     "Snippets"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Not-Applicable-NA/mugen-coding-supporter"
+  },
   "activationEvents": [
     "onLanguage:def",
     "onLanguage:cmd",
