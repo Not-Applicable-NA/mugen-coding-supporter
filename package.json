@@ -47,24 +47,16 @@
       "scopeName": "source.mugen",
       "path": "./syntaxes/mugen.tmLanguage.json"
     }],
-    "snippets": [
-      {
+    "snippets": [{
         "language": "def",
         "path": "./snippets/def.snippet.json"
-      },
-      {
+    },{
         "language": "cmd",
         "path": "./snippets/cmd.snippet.json"
-      },
-			{
+    },{
 				"language": "state",
 				"path": "./snippets/state.snippet.json"
-			},
-			{
-				"language": "state",
-				"path": "./snippets/trigger.snippet.json"
-			}
-    ],
+    }],
     "commands":{
       "title": "Generate Null States",
       "command": "extension.generateNull",
