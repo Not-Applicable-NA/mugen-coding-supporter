@@ -53,9 +53,6 @@
       "path": "./syntaxes/mugen.tmLanguage.json"
     }],
     "snippets": [{
-      "language": "def",
-      "path": "./snippets/def.snippet.json"
-    },{
       "language": "cmd",
       "path": "./snippets/cmd.snippet.json"
     },{

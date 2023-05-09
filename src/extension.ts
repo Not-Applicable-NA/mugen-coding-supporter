@@ -33,6 +33,12 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 	context.subscriptions.push(referenceProvider);
 
+	const defCompletions = vscode.languages.registerCompletionItemProvider(
+		[{ "scheme" : "file", "language" : "def" }],
+		new completionItems.DefCompletionItemProvidor()
+	);
+	context.subscriptions.push(defCompletions);
+
 	const triggerCompletions = vscode.languages.registerCompletionItemProvider(
 		[{ "scheme" : "file", "language" : "state" }],
 		new completionItems.TriggerCompletionItemProvidor()
