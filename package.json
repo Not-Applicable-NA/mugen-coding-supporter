@@ -62,7 +62,7 @@
       "language": "state",
       "path": "./snippets/state.snippet.json"
     }],
-    "commands":{
+    "commands": {
       "title": "Generate Null States",
       "command": "extension.generateNull",
       "category": "State Controller"
