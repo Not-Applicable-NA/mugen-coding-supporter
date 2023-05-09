@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as os from 'os';
 
 export class StateReferenceProvidor implements vscode.ReferenceProvider {
     provideReferences(document: vscode.TextDocument, position: vscode.Position, context: vscode.ReferenceContext, token: vscode.CancellationToken): vscode.ProviderResult<vscode.Location[]> {
@@ -24,7 +25,7 @@ export class StateReferenceProvidor implements vscode.ReferenceProvider {
                 if (objStats.isFile()) {
                     const fileExt = path.extname(objPath).toLocaleLowerCase();
                     if (fileExt == ".cns" || fileExt == ".st" || fileExt == ".def" || fileExt == ".txt") {
-                        const lines = fs.readFileSync(objPath).toString().split('\n');
+                        const lines = fs.readFileSync(objPath).toString().split(os.EOL);
                         for (let i = 0; i < lines.length; i++) {
                             if (lines[i].match(/^;/i)) {
                                 continue;
