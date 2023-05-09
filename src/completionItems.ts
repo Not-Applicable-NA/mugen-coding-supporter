@@ -1,1 +1,1 @@
-export { triggerCompletionItemProvidor } from './completionItems/triggerCompletions';
+export { TriggerCompletionItemProvidor } from './completionItems/triggerCompletions';

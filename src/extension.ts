@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const triggerCompletions = vscode.languages.registerCompletionItemProvider(
 		[{ "scheme" : "file", "language" : "state" }],
-		new completionItems.triggerCompletionItemProvidor()
+		new completionItems.TriggerCompletionItemProvidor()
 	);
 	context.subscriptions.push(triggerCompletions);
 
