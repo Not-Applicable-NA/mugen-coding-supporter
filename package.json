@@ -30,12 +30,12 @@
       "configuration": "./language-configuration.json"
     },{
       "id": "cmd",
-      "aliases": ["MUGEN COMMAND"],
+      "aliases": ["MUGEN CMD"],
       "extensions": [".cmd"],
       "configuration": "./language-configuration.json"
     },{
       "id": "state",
-      "aliases": ["MUGEN STATE"],
+      "aliases": ["MUGEN STATE", "MUGEN CNS", "MUGEN ST"],
       "extensions": [".cns", ".st"],
       "configuration": "./language-configuration.json"
     }],
