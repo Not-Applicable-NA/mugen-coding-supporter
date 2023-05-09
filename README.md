@@ -41,8 +41,7 @@ StateNo=XXXやChangeState、SelfStateなどで指定されたステート番号�
 
 ### **Nullステートコントローラーの自動生成**
 
-コマンドパレット(`Ctrl+Shift+P`)から、**'Generate Null States'**
-を実行すると、指定された数のNullステコンを自動生成できます。
+コマンドパレット(`Ctrl+Shift+P`)から、'Generate Null States' を実行すると、指定された数のNullステコンを自動生成できます。
 
 ![Nullステコン自動生成](images/Generate%20Null.gif)
 
