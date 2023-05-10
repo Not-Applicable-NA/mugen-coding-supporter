@@ -60,7 +60,7 @@ export function getDefCompletionItems(document: vscode.TextDocument): DefComplet
             ].join(os.EOL), 'def')
         },{
             label: `St${String(stCount(document))}`,
-            kind: vscode.CompletionItemKind.Class,
+            kind: vscode.CompletionItemKind.File,
             insertText: ((): vscode.SnippetString => {
                 const filesSnippet: vscode.SnippetString = new vscode.SnippetString(`St${String(stCount(document))} = `);
                 filesSnippet.appendChoice(getWorkspaceFileRelativePath(document));
@@ -69,7 +69,7 @@ export function getDefCompletionItems(document: vscode.TextDocument): DefComplet
             documentation: new vscode.MarkdownString(`キャラが使用する追加のステートファイル情報を定義します。${os.EOL}最大St9まで設定できます。`)
         },{
             label: `Pal${String(palCount(document))}`,
-            kind: vscode.CompletionItemKind.Class,
+            kind: vscode.CompletionItemKind.File,
             insertText: ((): vscode.SnippetString => {
                 const filesSnippet: vscode.SnippetString = new vscode.SnippetString(`Pal${String(palCount(document))} = `);
                 filesSnippet.appendChoice(getWorkspaceFileRelativePath(document));
