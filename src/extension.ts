@@ -9,47 +9,45 @@ import { generateNull } from './generateNull';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	const foldingRangeProvider = vscode.languages.registerFoldingRangeProvider(
-		[{ "scheme" : "file", "language" : "state" }],
-		new stateProvidors.StateFoldingRangeProvidor()
-	);
-	context.subscriptions.push(foldingRangeProvider);
+	const stateFileProviders: vscode.Disposable[] = [
+		vscode.languages.registerFoldingRangeProvider(
+			[{ "scheme" : "file", "language" : "state" }],
+			new stateProvidors.StateFoldingRangeProvidor()
+		),
+		vscode.languages.registerDocumentSymbolProvider(
+			[{ "scheme" : "file", "language" : "state" }],
+			new stateProvidors.StateSymbolProvidor()
+		),
+		vscode.languages.registerDefinitionProvider(
+			[{ "scheme" : "file", "language" : "state" }],
+			new stateProvidors.StateDefinitionProvidor()
+		),
+		vscode.languages.registerReferenceProvider(
+			[{ "scheme" : "file", "language" : "state" }],
+			new stateProvidors.StateReferenceProvidor()
+		)
+	]
+	for (const stateFileProvider of stateFileProviders) {
+		context.subscriptions.push(stateFileProvider);
+	}
 
-	const documentSymbolProvider = vscode.languages.registerDocumentSymbolProvider(
-		[{ "scheme" : "file", "language" : "state" }],
-		new stateProvidors.StateSymbolProvidor()
-	);
-	context.subscriptions.push(documentSymbolProvider);
-
-	const definitionProvider = vscode.languages.registerDefinitionProvider(
-		[{ "scheme" : "file", "language" : "state" }],
-		new stateProvidors.StateDefinitionProvidor()
-	);
-	context.subscriptions.push(definitionProvider);
-
-	const referenceProvider = vscode.languages.registerReferenceProvider(
-		[{ "scheme" : "file", "language" : "state" }],
-		new stateProvidors.StateReferenceProvidor()
-	);
-	context.subscriptions.push(referenceProvider);
-
-	const defCompletions = vscode.languages.registerCompletionItemProvider(
-		[{ "scheme" : "file", "language" : "def" }],
-		new completionItems.DefCompletionItemProvidor()
-	);
-	context.subscriptions.push(defCompletions);
-
-	const cmdCompletions = vscode.languages.registerCompletionItemProvider(
-		[{ "scheme" : "file", "language" : "cmd" }],
-		new completionItems.CmdCompletionItemProvidor()
-	);
-	context.subscriptions.push(defCompletions);
-
-	const triggerCompletions = vscode.languages.registerCompletionItemProvider(
-		[{ "scheme" : "file", "language" : "state" }],
-		new completionItems.TriggerCompletionItemProvidor()
-	);
-	context.subscriptions.push(triggerCompletions);
+	const completions: vscode.Disposable[] = [
+		vscode.languages.registerCompletionItemProvider(
+			[{ "scheme" : "file", "language" : "def" }],
+			new completionItems.DefCompletionItemProvidor()
+		),
+		vscode.languages.registerCompletionItemProvider(
+			[{ "scheme" : "file", "language" : "cmd" }],
+			new completionItems.CmdCompletionItemProvidor()
+		),
+		vscode.languages.registerCompletionItemProvider(
+			[{ "scheme" : "file", "language" : "state" }],
+			new completionItems.TriggerCompletionItemProvidor()
+		)
+	]
+	for (const completion of completions) {
+		context.subscriptions.push(completion);
+	}
 
 	const generateNullCommand = vscode.commands.registerCommand(
 		'extension.generateNull', generateNull
