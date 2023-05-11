@@ -11,40 +11,40 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const stateFileProviders: vscode.Disposable[] = [
 		vscode.languages.registerFoldingRangeProvider(
-			[{ "scheme" : "file", "language" : "state" }],
+			[{ 'scheme' : 'file', 'language' : 'state' }],
 			new stateProvidors.StateFoldingRangeProvidor()
 		),
 		vscode.languages.registerDocumentSymbolProvider(
-			[{ "scheme" : "file", "language" : "state" }],
+			[{ 'scheme' : 'file', 'language' : 'state' }],
 			new stateProvidors.StateSymbolProvidor()
 		),
 		vscode.languages.registerDefinitionProvider(
-			[{ "scheme" : "file", "language" : "state" }],
+			[{ 'scheme' : 'file', 'language' : 'state' }],
 			new stateProvidors.StateDefinitionProvidor()
 		),
 		vscode.languages.registerReferenceProvider(
-			[{ "scheme" : "file", "language" : "state" }],
+			[{ 'scheme' : 'file', 'language' : 'state' }],
 			new stateProvidors.StateReferenceProvidor()
 		)
-	]
+	];
 	for (const stateFileProvider of stateFileProviders) {
 		context.subscriptions.push(stateFileProvider);
 	}
 
 	const completions: vscode.Disposable[] = [
 		vscode.languages.registerCompletionItemProvider(
-			[{ "scheme" : "file", "language" : "def" }],
+			[{ 'scheme' : 'file', 'language' : 'def' }],
 			new completionItems.DefCompletionItemProvidor()
 		),
 		vscode.languages.registerCompletionItemProvider(
-			[{ "scheme" : "file", "language" : "cmd" }],
+			[{ 'scheme' : 'file', 'language' : 'cmd' }],
 			new completionItems.CmdCompletionItemProvidor()
 		),
 		vscode.languages.registerCompletionItemProvider(
-			[{ "scheme" : "file", "language" : "state" }],
+			[{ 'scheme' : 'file', 'language' : 'state' }],
 			new completionItems.TriggerCompletionItemProvidor()
 		)
-	]
+	];
 	for (const completion of completions) {
 		context.subscriptions.push(completion);
 	}
