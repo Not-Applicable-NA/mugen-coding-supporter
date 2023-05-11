@@ -1,64 +1,53 @@
 import * as vscode from 'vscode';
+import { trimTextLine } from '../trimText';
+import { getAllFileUris } from '../uri';
 import * as path from 'path';
-import * as fs from 'fs';
 import * as os from 'os';
 
 export class StateReferenceProvidor implements vscode.ReferenceProvider {
-    provideReferences(document: vscode.TextDocument, position: vscode.Position, context: vscode.ReferenceContext, token: vscode.CancellationToken): vscode.ProviderResult<vscode.Location[]> {
-        const stateReferenceLocation: vscode.Location[] = [];
-        const stateNoRange = document.getWordRangeAtPosition(position);
-        if (!stateNoRange) {
-            return undefined;
-        }
+    provideReferences(document: vscode.TextDocument, position: vscode.Position): vscode.ProviderResult<vscode.Location[]> {
+        return (async (): Promise<vscode.Location[] | undefined> => {
+            const stateReferenceLocation: vscode.Location[] = [];
 
-        const currentWorkspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri); 
-        if (!currentWorkspaceFolder) {
-            return undefined;
-        }
+            const stateNoRange: vscode.Range | undefined = document.getWordRangeAtPosition(position);
+            const currentWorkspaceFolder: vscode.WorkspaceFolder | undefined = vscode.workspace.getWorkspaceFolder(document.uri);
+            if (!stateNoRange || !currentWorkspaceFolder) {
+                return undefined;
+            }
 
-        const stateReferenceRegex = new RegExp(`[^a-z0-9-]${document.getText(stateNoRange)}[^0-9]`, 'i');
-        let flag = false;
-        const fileSearch = (folderPath: string) => {
-            for (const object of fs.readdirSync(folderPath)) {
-                const objPath = path.join(folderPath, object);
-                const objStats = fs.statSync(objPath);
-                if (objStats.isFile()) {
-                    const fileExt = path.extname(objPath).toLocaleLowerCase();
-                    if (fileExt == ".cns" || fileExt == ".st" || fileExt == ".def" || fileExt == ".txt") {
-                        const lines = fs.readFileSync(objPath).toString().split(os.EOL);
-                        for (let i = 0; i < lines.length; i++) {
-                            if (lines[i].match(/^;/i)) {
-                                continue;
-                            }
-                            if (lines[i].match(/stateno *=/i) && lines[i].match(stateReferenceRegex)) {
+            // const stateReferenceRegex = new RegExp(`[^a-z0-9-]${document.getText(stateNoRange)}[^0-9]`, 'i');
+
+            const currentWorkspaceFileUris: vscode.Uri[] = await getAllFileUris(currentWorkspaceFolder.uri, '.git');
+            let flag: boolean = false;
+            for (const fileUri of currentWorkspaceFileUris) {
+                if (path.extname(fileUri.fsPath).match(/(sff|air|snd|act)/i)) {
+                    continue;
+                }
+                const textlines: string[] = (await vscode.workspace.fs.readFile(fileUri)).toString().split(os.EOL);
+                for (let i = 0; i < textlines.length; i++) {
+                    const text = trimTextLine(textlines[i]);
+                    if (text === '') {
+                        continue;
+                    } else if (text.match(new RegExp(`stateno=.*\\b${document.getText(stateNoRange)}\\b`, 'i'))) {
+                        stateReferenceLocation.push(
+                            new vscode.Location(fileUri, new vscode.Position(i, 0))
+                        );
+                    } else {
+                        if (text.match(/(change|self|target)state/i)) {
+                            flag = true;
+                        } else if (text.match(/\[state/i)) {
+                            flag = false;
+                        } else {
+                            if (flag && text.match(new RegExp(`value=.*\\b${document.getText(stateNoRange)}\\b`, 'i'))) {
                                 stateReferenceLocation.push(
-                                    new vscode.Location(vscode.Uri.file(objPath), new vscode.Position(i, 0))
+                                    new vscode.Location(fileUri, new vscode.Position(i, 0))
                                 );
-                                continue;
-                            } else {
-                                if (lines[i].match(/\[state /i)) {
-                                    flag = false;
-                                }
-                                if (lines[i].match(/(change|self|target)state/i)) {
-                                    flag = true;
-                                }
-                                if (flag && lines[i].match(/value *=/i) && lines[i].match(stateReferenceRegex)) {
-                                    stateReferenceLocation.push(
-                                        new vscode.Location(vscode.Uri.file(objPath), new vscode.Position(i, 0))
-                                    );
-                                    flag = false;
-                                    continue;
-                                }
                             }
-                        }
+                        } 
                     }
-                } else if (objStats.isDirectory()) {
-                    fileSearch(objPath);
                 }
             }
-        }
-        fileSearch(currentWorkspaceFolder.uri.fsPath);
-
-        return stateReferenceLocation;
+            return stateReferenceLocation;
+        })();
     }
 }
