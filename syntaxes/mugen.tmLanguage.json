@@ -4,7 +4,6 @@
 	"scopeName": "source.mugen",
 	"patterns": [
 		{"include": "#comments"},
-		{"include": "#strings"},
 		{"include": "#sections"},
 		{"include": "#keyValues"}
 	],
@@ -15,26 +14,27 @@
 			"end": "$"
 		},
 		"sections": {
-			"begin": "^(?=\\[)",
-			"end": "$",
 			"patterns": [
-				{"include": "#comments"},
-				{"include": "#statedef"},
 				{
 					"name": "entity.name.class",
-					"match": "[^;]+\\]"
+					"match": "^(\\[[^;]+\\])",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "string.regexp",
+									"match": "\\[(?i)statedef\\s+-?\\d+\\]"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
-		"statedef": {
-			"name": "string.regexp",
-			"match": "\\[(?i)statedef *-?\\d+\\]"
-		},
 		"keyValues": {
 			"patterns": [
-				{"include": "#comments"},
 				{
-					"match": "^([^;=]+)\\s*(.*)$",
+					"match": "^([^;]+?)=\\s*(.*)$",
 					"captures": {
 						"1": {
 							"patterns": [
@@ -48,7 +48,6 @@
 						},
 						"2": {
 							"patterns": [
-								{"include": "#comments"},
 								{"include": "#values"}
 							]
 						}
@@ -72,17 +71,20 @@
 			"patterns": [
 				{"include": "#comments"},
 				{"include": "#strings"},
-				{"include": "#number"},
 				{"include": "#operator"},
+				{"include": "#number"},
+				{"include": "#redirect1"},
+				{"include": "#redirect2"},
 				{"include": "#area"},
 				{"include": "#ifelse"},
 				{"include": "#variable"},
 				{"include": "#const"},
 				{"include": "#gethitvar"},
 				{"include": "#function"},
+				{"include": "#brackets"},
 				{
 					"name":"variable",
-					"match": "."
+					"match": "\\S"
 				}
 			]
 		},
@@ -91,17 +93,10 @@
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
+				{"include": "#comments"},
 				{
 					"name": "constant.character.escape",
 					"match": "\\\\."
-				}
-			]
-		},
-		"number": {
-			"patterns": [
-				{
-					"name": "constant.numeric",
-					"match": "\\b\\d+\\b"
 				}
 			]
 		},
@@ -114,34 +109,57 @@
 				{
 					"name": "keyword.control",
 					"match": "(\\||!|&|\\^)"
+				},
+				{
+					"name": "constant.numeric",
+					"match": "(\\+|-|\\*|/)"
 				}
 			]
 		},
-		"area": {
-			"name": "constant.character.escape",
-			"begin": "\\[",
-			"end": "\\]",
+		"number": {
+			"patterns": [
+				{
+					"name": "constant.numeric",
+					"match": "\\b\\d+\\b"
+				}
+			]
+		},
+		"redirect1": {
 			"patterns": [
 				{
 					"name": "constant.character.escape",
-					"match": ","
-				},
+					"match": "\\b(?i)(parent|root|partner|helper|target|enemy(near)?),"
+				}
+			]
+		},
+		"redirect2": {
+			"name": "constant.character.escape",
+			"begin": "\\b(?i)(helper|target|enemy(near)?|playerid)\\(",
+			"end": "\\),",
+			"patterns": [{"include": "#values"}]
+		},
+		"area": {
+			"patterns": [
 				{
-					"include": "#values"
+					"name": "constant.character.escape",
+					"match": "\\[([^;]*),([^;]*)\\]",
+					"captures": {
+						"1": { "patterns": [{"include": "#values"}] },
+						"2": { "patterns": [{"include": "#values"}] }
+					}
 				}
 			]
 		},
 		"ifelse": {
-			"name": "keyword.control",
-			"begin": "(?i)ifelse\\(",
-			"end": "\\)",
 			"patterns": [
 				{
 					"name": "keyword.control",
-					"match": ","
-				},
-				{
-					"include": "#values"
+					"match": "(?i)ifelse\\(([^;]*),([^;]*),([^;]*)\\)",
+					"captures": {
+						"1": { "patterns": [{"include": "#values"}] },
+						"2": { "patterns": [{"include": "#values"}] },
+						"3": { "patterns": [{"include": "#values"}] }
+					}
 				}
 			]
 		},
@@ -149,37 +167,43 @@
 			"name": "constant.character",
 			"begin": "(?i)(f|sys|sysf)?var\\(",
 			"end": "\\)",
-			"patterns": [
-				{
-					"include": "#values"
-				}
-			]
+			"patterns": [{"include": "#values"}]
 		},
 		"const": {
+			"name": "entity.name.class",
+			"begin": "(?i)const\\(",
+			"end": "\\)",
 			"patterns": [
+				{"include": "#comments"},
 				{
-					"name": "entity.name.class",
-					"match": "(?i)const\\([^;]+\\)"
+					"name": "string",
+					"match": "(?i)[a-z.]"
 				}
 			]
 		},
 		"gethitvar": {
+			"name": "entity.name.class",
+			"begin": "(?i)gethitvar\\(",
+			"end": "\\)",
 			"patterns": [
+				{"include": "#comments"},
 				{
 					"name": "entity.name.function",
-					"match": "(?i)gethitvar\\([^;]+\\)"
+					"match": "(?i)[a-z.]"
 				}
 			]
 		},
 		"function": {
 			"name": "entity.name.function",
-			"begin": "((?i)[a-z]+)?\\(",
+			"begin": "(?i)[a-z]+\\(",
 			"end": "\\)",
-			"patterns": [
-				{
-					"include": "#values"
-				}
-			]
+			"patterns": [{"include": "#values"}]
+		},
+		"brackets": {
+			"name": "constant.numeric",
+			"begin": "\\(",
+			"end": "\\)",
+			"patterns": [{"include": "#values"}]
 		}
 	}
 }
