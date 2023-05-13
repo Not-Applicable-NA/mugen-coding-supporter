@@ -1,9 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as stateProvidors from './stateProvidors';
-import * as completionItems from './completionItems';
-import { generateNull } from './generateNull';
+import * as providors from './providorIndex';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -12,19 +10,19 @@ export function activate(context: vscode.ExtensionContext) {
 	const stateFileProviders: vscode.Disposable[] = [
 		vscode.languages.registerFoldingRangeProvider(
 			[{ 'scheme' : 'file', 'language' : 'state' }],
-			new stateProvidors.StateFoldingRangeProvidor()
+			new providors.StateFoldingRangeProvidor()
 		),
 		vscode.languages.registerDocumentSymbolProvider(
 			[{ 'scheme' : 'file', 'language' : 'state' }],
-			new stateProvidors.StateSymbolProvidor()
+			new providors.StateSymbolProvidor()
 		),
 		vscode.languages.registerDefinitionProvider(
 			[{ 'scheme' : 'file', 'language' : 'state' }],
-			new stateProvidors.StateDefinitionProvidor()
+			new providors.StateDefinitionProvidor()
 		),
 		vscode.languages.registerReferenceProvider(
 			[{ 'scheme' : 'file', 'language' : 'state' }],
-			new stateProvidors.StateReferenceProvidor()
+			new providors.StateReferenceProvidor()
 		)
 	];
 	for (const stateFileProvider of stateFileProviders) {
@@ -34,15 +32,15 @@ export function activate(context: vscode.ExtensionContext) {
 	const completions: vscode.Disposable[] = [
 		vscode.languages.registerCompletionItemProvider(
 			[{ 'scheme' : 'file', 'language' : 'def' }],
-			new completionItems.DefCompletionItemProvidor()
+			new providors.DefCompletionItemProvidor()
 		),
 		vscode.languages.registerCompletionItemProvider(
 			[{ 'scheme' : 'file', 'language' : 'cmd' }],
-			new completionItems.CmdCompletionItemProvidor()
+			new providors.CmdCompletionItemProvidor()
 		),
 		vscode.languages.registerCompletionItemProvider(
 			[{ 'scheme' : 'file', 'language' : 'state' }],
-			new completionItems.TriggerCompletionItemProvidor()
+			new providors.TriggerCompletionItemProvidor()
 		)
 	];
 	for (const completion of completions) {
